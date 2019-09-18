@@ -26,4 +26,4 @@ TECHNOLOGY STACK: JAVASCRIPT.
 
 4. PARKING SPOT FINDER
 
-The idea is to find the nearest parking spot, either free or paid. We think that it will be useful, but we are working on refining the idea to make it less complex and effective.
+The idea is to find the nearest parking spot, either free or paid. We think that it will be useful, but we are working on refining the idea to make it less complex and more effective.
