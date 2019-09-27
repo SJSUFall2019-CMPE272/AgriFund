@@ -1,3 +1,5 @@
+UPDATED PROJECT IDEAS.
+
 1.DEFECT TRACKER-
 
 Project idea-we often repeat the minor mistakes made by others while building a software which results in bugs. The goal of this project is to identify those mistakes while a project is being built by which those minor defects can be prevented.
