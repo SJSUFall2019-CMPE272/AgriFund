@@ -1,29 +1,26 @@
-1. DAY SCHEDULER
+1.DEFECT TRACKER-
 
-DESCRIPTION: This app takes the daily activities of the user as input, allocates time for each activity and schedules them accordingly.  If the user completes a particular activity early or late, the application automatically reschedules the other activities as per the user’s interests automatically.
+Project idea-we often repeat the minor mistakes made by others while building a software which results in bugs. The goal of this project is to identify those mistakes while a project is being built by which those minor defects can be prevented.
 
-USERS: Can be used by anyone.
+We have a dataset which consists of more than 200,000 entries of data on the reported bugs of Mozilla Firefox and eclipse, we can use this to train our machine learning model which identifies the kinds of defects upcoming projects might have. We can even use various datasets to train our model to make it useful on other domains.
 
-TECHNOLOGY STACK: JAVASCRIPT.
+We propose to develop a model which lists out bugs which a developer might face in future based on his project. He can rectify those in the initial stages of his project.
 
-2. FOOD SELECTOR
-
-DESCRIPTION- This app prepares a diet for the user based on the mode he/she selects. The modes usually are weight loss, weight gain, muscle gain, weight maintenance, etc. It shows what food the user has to take in order to achieve their goal.
-
-USERS: Can be used by anyone.
-
-TECHNOLOGY STACK: JAVASCRIPT.
+Dataset: https://github.com/ansymo/msr2013-bug_dataset
 
 
-3. BUDGET PLANNER
+2.TA EVALUATOR-
 
-This app plans the user’s weekly expenses based on the amount of budget he/she allocates and the list of items they want to purchase for a week as inputs. It also allows the user to prioritise the items and assigns a high price for high prioritised items restricting itself to the budget.
+Project idea- professors generally get a lot of requests for an assistantship. Our goal is to make the selection process easier for a professor. Our idea is to develop a model which would be trained with the performances of previous teaching assistants to predict the performance of the current applicant.
 
-USERS: Can be used by anyone.
+We found a suitable dataset which consists of required information about previous teaching assistants and their performance which would enable to rank all the requests received to the professor.
 
-TECHNOLOGY STACK: JAVASCRIPT.
+Dataset-https://archive.ics.uci.edu/ml/datasets/Teaching+Assistant+Evaluation
 
+3.ADD ACCEPTANCE-
 
-4. PARKING SPOT FINDER
+Project idea-there are many advertising companies developing adds everyday, but they won’t know if their add will be accepted by their employer untill they actually show it to him. We propose a model which would tell if their employer would be satisfied or not.
 
-The idea is to find the nearest parking spot, either free or paid. We think that it will be useful, but we are working on refining the idea to make it less complex and more effective.
+We have a dataset which consists of previous datas of farm adds and their acceptance from the owners, this can be used to train the model which will make it capable enough to give good accurate predictions.
+
+Dataset-https://archive.ics.uci.edu/ml/datasets/Farm+Ads
