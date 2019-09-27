@@ -1,3 +1,7 @@
+NONE of your ideas APPROVED. Here I am giving you to research use of Blockchain in crowdfunding application and creating a mobile app for farmers in India
+https://www.ibm.com/blogs/blockchain/2019/09/blockchains-potential-to-revolutionize-crowdfunding/
+
+
 1. BUG DETECTOR
 
 Project idea- As developers, we often make mistakes while trying out new codes that might have already been fixed by someone else and end up wasting a lot of time fixing something that has a fix. The goal of this project is to identify those mistakes in the early stages using the dataset which consists of more than 200,000 entries of data on the reported bugs of Mozilla Firefox and Eclipse. 
