@@ -24,7 +24,7 @@ We have a dataset which consists of previous data of farm ads and their acceptan
 
 Dataset-https://archive.ics.uci.edu/ml/datasets/Farm+Ads
 
-4. Track the Trap
+4. TRACK THE TRAP
 
 Project idea- Poaching is a huge issue that has come into light with rise in environmental problems. Although illegal, poaching has been around for ages and inspite of allocating a lot of resources, they aren't being put to optimal use. We would like to develop a system that can read data about previous poaching activities, entrapment locations and other such data to predict possible poaching strips where the activity maybe carried out on a bigger scale so the resources can be allocated efficiently.
 
