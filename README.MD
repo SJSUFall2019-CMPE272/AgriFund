@@ -5,7 +5,7 @@ https://www.ibm.com/blogs/blockchain/2019/09/blockchains-potential-to-revolution
 					Abstract
 
 
-AgFund:
+AgriFund:
 
 24.6% of Indian population are farmers. Even to this day, with all the technological advancement, Indian agriculture is still plagued by several problems. Farmers do not have enough resources. They depend on rains for farming which are highly unpredictable which gives rise to the need for canals, borewells and other such provisions. On the other hand, funders are not aware of farmers issues. There’s not enough funding and even funds that have been raised do not reach the farmers. Crowdfunding solves the problem of raising enough funds for farmers but lacks financial transparency. Donors have to accept risk of fraud and misuse of funds. For creating a transparent system for this issue, we combine crowdfunding and blockchain technology.
 
