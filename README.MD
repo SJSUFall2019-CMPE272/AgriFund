@@ -2,34 +2,14 @@ NONE of your ideas APPROVED. Here I am giving you to research use of Blockchain 
 https://www.ibm.com/blogs/blockchain/2019/09/blockchains-potential-to-revolutionize-crowdfunding/
 
 
-1. BUG DETECTOR
-
-Project idea- As developers, we often make mistakes while trying out new codes that might have already been fixed by someone else and end up wasting a lot of time fixing something that has a fix. The goal of this project is to identify those mistakes in the early stages using the dataset which consists of more than 200,000 entries of data on the reported bugs of Mozilla Firefox and Eclipse. 
-We can further train our machine learning model with various datasets to make it useful on other domains.
-
-We propose to develop a model which lists out bugs that a developer might face in future based on his project. He can rectify those in the initial stages of his project.
-
-Dataset: https://github.com/ansymo/msr2013-bug_dataset
+					Abstract
 
 
-2. TA EVALUATOR
+AgFund:
 
-Project idea- Professors generally get a lot of requests for an assistantship. Our goal is to make the selection process easy for a professor. Our idea is to develop a model which would be trained with the performances of previous teaching assistants to predict the performance of the current applicant.
+24.6% of Indian population are farmers. Even to this day, with all the technological advancement, Indian agriculture is still plagued by several problems. Farmers do not have enough resources. They depend on rains for farming which are highly unpredictable which gives rise to the need for canals, borewells and other such provisions. On the other hand, funders are not aware of farmers issues. There’s not enough funding and even funds that have been raised do not reach the farmers. Crowdfunding solves the problem of raising enough funds for farmers but lacks financial transparency. Donors have to accept risk of fraud and misuse of funds. For creating a transparent system for this issue, we combine crowdfunding and blockchain technology.
 
-We found a suitable dataset which consists of required information about previous teaching assistants and their performance which would enable us to rank all the requests received to the professor.
+Crowdfunding is a form of alternative sourcing that can be used to raise funds by collecting small amounts of money from a large number of people, usually over the internet. Blockchain is a way of aggregating and sharing information that can either be made transparent or not, based on the requirement.
 
-Dataset-https://archive.ics.uci.edu/ml/datasets/Teaching+Assistant+Evaluation
-
-3. AD ACCEPTANCE
-
-Project idea- There are many advertising companies developing ads everyday, but they won’t know if their ad will be accepted by their employer until they actually show it to him. We propose a model which would tell if their employer would be satisfied or not.
-
-We have a dataset which consists of previous data of farm ads and their acceptance from the owners. This can be used to train the model which will make it capable enough to give good accurate predictions.
-
-Dataset-https://archive.ics.uci.edu/ml/datasets/Farm+Ads
-
-4. TRACK THE TRAP
-
-Project idea- Poaching is a huge issue that has come into light with rise in environmental problems. Although illegal, poaching has been around for ages and inspite of allocating a lot of resources, they aren't being put to optimal use. We would like to develop a system that can read data about previous poaching activities, entrapment locations and other such data to predict possible poaching strips where the activity maybe carried out on a bigger scale so the resources can be allocated efficiently.
-
-Dataset- Not found yet.
+Our system: 
+The app will allow creation of farmer groups based on geography, verify authentic farmers & donors. Farmers can list their problems, requirements and approximate funds needed. Funds will be raised using crowdfunding and farmers provide receipts of utilization of funds that have been allocated.  Donors and farmers will have access to see the flow of funds from origin to the end with a donation ledger that keeps track of the flow of funds. This will help create accountability and accessibility between individuals and organizations. Donors will know the impact of their money. It creates a perfect environment of digital trust without having a centralized authority to maintain the system.
