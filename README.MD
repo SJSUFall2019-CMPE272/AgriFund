@@ -1,8 +1,4 @@
-NONE of your ideas APPROVED. Here I am giving you to research use of Blockchain in crowdfunding application and creating a mobile app for farmers in India
-https://www.ibm.com/blogs/blockchain/2019/09/blockchains-potential-to-revolutionize-crowdfunding/
-
-
-					ABSTRACT
+	ABSTRACT
 
 
 AgriFund:
@@ -14,12 +10,14 @@ Crowdfunding is a form of alternative sourcing that can be used to raise funds b
 Our system: 
 The app will allow creation of farmer groups based on geography, verify authentic farmers & donors. Farmers can list their problems, requirements and approximate funds needed. Funds will be raised using crowdfunding and farmers provide receipts of utilization of funds that have been allocated.  Donors and farmers will have access to see the flow of funds from origin to the end with a donation ledger that keeps track of the flow of funds. This will help create accountability and accessibility between individuals and organizations. Donors will know the impact of their money. It creates a perfect environment of digital trust without having a centralized authority to maintain the system.
 
-					TECHNOLOGY STACK
+	TECHNOLOGY STACK
 Node, React, Heroku, AWS, Docker, Kong APIGateway,MongoDB,Mysql.
 
-					ARCHITECTURE
+	ARCHITECTURE
 
 ![Architecture Diagram (3)](https://user-images.githubusercontent.com/54782841/66379020-855fd980-e969-11e9-8875-6850d4dceb08.jpg)
 
-
+	BLOCK-CHAIN ARCHITECTURE
+	
+	
 ![Image 10-7-19 at 11 04 PM (1)](https://user-images.githubusercontent.com/54782841/66379217-e12a6280-e969-11e9-8eed-e37c7c458933.jpg)
