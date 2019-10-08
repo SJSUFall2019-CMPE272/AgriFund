@@ -1,3 +1,10 @@
+Team 12:
+Kowshhal Uppu
+Ramya Bandi
+Nivali Reddy Sripathi
+Dhanasree Are
+
+
 	ABSTRACT
 
 
