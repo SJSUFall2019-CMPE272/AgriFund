@@ -26,7 +26,7 @@ NodeJS, ReactJS, Heroku, AWS, Docker, Kong APIGateway, MongoDB, Mysql.
 
 	ARCHITECTURE
 
-![Architecture Diagram (3)](https://user-images.githubusercontent.com/54782841/66379020-855fd980-e969-11e9-8875-6850d4dceb08.jpg)
+![Architecture Diagram (3)](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/Architecture%20Diagram%20(3).jpg)
 
 	BLOCK-CHAIN ARCHITECTURE
 	
