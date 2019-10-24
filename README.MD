@@ -31,4 +31,4 @@ NodeJS, ReactJS, Heroku, AWS, Docker, Kong APIGateway, MongoDB, Mysql.
 	BLOCK-CHAIN ARCHITECTURE
 	
 	
-![Image 10-7-19 at 11 04 PM (1)](https://user-images.githubusercontent.com/54782841/66379217-e12a6280-e969-11e9-8eed-e37c7c458933.jpg)
+![Image 10-7-19 at 11 04 PM (1)](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/BlockChain.jpg)
