@@ -26,7 +26,7 @@ Our system:
 The app will allow creation of farmer groups based on geography, verify authentic farmers & donors. Farmers can list their problems, requirements and approximate funds needed. Funds will be raised using crowdfunding and farmers provide receipts of utilization of funds that have been allocated.  Donors and farmers will have access to see the flow of funds from origin to the end with a donation ledger that keeps track of the flow of funds. This will help create accountability and accessibility between individuals and organizations. Donors will know the impact of their money. It creates a perfect environment of digital trust without having a centralized authority to maintain the system.
 
 	TECHNOLOGY STACK
-NodeJS, ReactJS, Heroku, AWS, Docker, Kong APIGateway, MongoDB, Mysql.
+NodeJS, Angular8, AWS, Docker, AWS APIGateway, MongoDB.
 
 	ARCHITECTURE
 
