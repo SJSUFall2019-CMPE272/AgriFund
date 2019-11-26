@@ -48,6 +48,7 @@ import { Interceptor } from "./Interceptor/interceptor";
 import {MainService} from './services/main.service';
 import { LandingComponent } from './landing/landing.component';
 import { Login1Component } from './login1/login1.component';
+import { EditIssueComponent } from './edit-issue/edit-issue.component';
 /* Widget Import Ends */
 
 @NgModule({
@@ -76,7 +77,8 @@ import { Login1Component } from './login1/login1.component';
     PieChartComponent,
 
     LandingComponent,
-    Login1Component
+    Login1Component,
+    EditIssueComponent
 
   ],
   entryComponents: [

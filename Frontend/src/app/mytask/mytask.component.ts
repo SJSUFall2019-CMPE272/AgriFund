@@ -7,7 +7,7 @@ import { FormControl } from '@angular/forms';
 
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Create_taskComponent } from '../create_task/create_task.component';
-
+import {EditIssueComponent} from '../edit-issue/edit-issue.component';
 import {MainService} from '../services/main.service';
 
 
@@ -45,13 +45,7 @@ export interface DialogData {
 }
 
 
-const ELEMENT_DATA1: PeriodicElement1[] = [
-  {id: 1, description: 'equipment installation', date: '12/12/2019', agent: 'Pratish'},
-  {id: 2, description: 'equipment installation', date: '12/12/2019', agent: 'Pratish'},
-  {id: 3, description: 'equipment installation', date: '12/12/2019', agent: 'Pratish'},
-  {id: 4, description: 'equipment installation', date: '12/12/2019', agent: 'Pratish'},
- 
-];
+
 
 export interface PeriodicElement {
   name: string;
@@ -76,6 +70,8 @@ const ELEMENT_DATA: PeriodicElement[] = [
 ];
 
 
+
+
 @Component({
   selector: 'app-mytask',
   templateUrl: './mytask.component.html',
@@ -86,8 +82,6 @@ export class MytaskComponent implements OnInit {
  animal: string;
   name: string;
 
-  displayedColumns1: string[] = ['id', 'description', 'date', 'agent'];
-  dataSource1 = ELEMENT_DATA1;
 
   private ngVersion: string = VERSION.full;
     // Only required when not passing the id in methods
@@ -98,6 +92,7 @@ export class MytaskComponent implements OnInit {
   conditionFlag: boolean = true;
   mode = new FormControl('over');
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'status', 'Actions'];
+  displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
   selection = new SelectionModel<PeriodicElement>(true, []);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -165,6 +160,18 @@ this.username=sessionStorage.getItem('name')
 
   openDialog(): void {
     const dialogRef = this.dialog.open(Create_taskComponent, {
+      width: '1000px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
+  openDialog1(): void {
+    const dialogRef = this.dialog.open(EditIssueComponent, {
       width: '1000px',
       data: {name: this.name, animal: this.animal}
     });

@@ -1,3 +1,11 @@
+<head>
+  <style>
+    .example-form-field {
+  width: 200px;
+  bottom:30px;
+}
+</style>
+</head>
 <section class="user">
   <div class="user_options-container">
     <div class="user_options-text">
@@ -27,20 +35,33 @@
       </div>
       <div class="user_forms-signup">
         <h2 class="forms_title">Sign Up</h2>
-        <input type="text" placeholder="Fullname" [(ngModel)]="name" style="width: 300px;"/>
-          <br><br>
-          <input type="text" placeholder="E-Mail" [(ngModel)]="email" style="width: 300px;"/>
-          <br><br>
-          <input type="password" placeholder="Password" [(ngModel)]="password" style="width: 300px;"/>
-          <br><br>
-          <select [(ngModel)]="selectedLevel">
-              <option *ngFor="let item of data" [ngValue]="item">{{item.name}}</option>
-            </select>
-          <div>
-            <br>
-            <button mat-raised-button color="" style="  width: 10em;
-          margin-left: 10em; background: #37c964;  color: #fff ;top:1px;" (click)=login()>Sign Up</button>
-          </div>
+        <mat-form-field class="example-form-field">
+          <input matInput type="text" placeholder="Full Name" [(ngModel)]="name">
+          <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <br>
+          <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="E-Mail" [(ngModel)]="email">
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <br>
+          <!-- <input type="text" placeholder="E-Mail" [(ngModel)]="email" style="width: 300px;"/> -->
+          <mat-form-field class="example-form-field">
+            <input matInput type="password" placeholder="Password" [(ngModel)]="password">
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field>
+          <mat-select [(value)]="selectedLevel">
+            <mat-option value="farmer">Farmer</mat-option>
+            <mat-option value="donor">Donor</mat-option>
+          </mat-select>
+            <button mat-raised-button color="" style=" width: 10em;
+          margin-left: 10em; background: #37c964;  color: #fff ;" (click)=login()>Sign Up</button>
       </div>
     </div>
   </div>

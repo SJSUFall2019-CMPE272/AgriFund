@@ -13,11 +13,7 @@ export class Login1Component implements OnInit {
   name:any
   email:any
   password:any
-  selectedLevel:any;
-  data:Array<Object> = [
-      {id: 0, name: "Farmer"},
-      {id: 1, name: "Donor"}
-  ];
+  selectedLevel:any
   ngOnInit() {
 
 const signupButton = document.getElementById('signup-button'),
