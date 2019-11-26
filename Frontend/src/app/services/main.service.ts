@@ -32,12 +32,24 @@ export class MainService {
             console.log(res);
         });
   }
-  getSpecificIssue(userId:AnalyserOptions){
+  getSpecificIssue(userId:AnalyserOptions):any{
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
      this.http.get("endpoint"+'/{'+userId+'}',{headers: header}).subscribe((res) => {
             //tostr message
             console.log(res);
+            return res
         });
+        
+  }
+  getAllIssues():any{
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.get("endpoint",{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+            return res
+        });
+        
   }
 }

@@ -16,6 +16,7 @@ import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatStepper } from '@angular/material';
+import { timingSafeEqual } from 'crypto';
 
 const colors: any = {
   red: {
@@ -33,10 +34,10 @@ const colors: any = {
 };
 
 export interface PeriodicElement1 {
-  description: string;
-  id: number;
-  date: any;
-  agent: string;
+  name: string;
+  position: number;
+status: string;
+  Due: string;
 }
 
 export interface DialogData {
@@ -55,7 +56,7 @@ status: string;
 
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
+const ELEMENT_DATA: any = [
   { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
   { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
   { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
@@ -94,6 +95,7 @@ export class MytaskComponent implements OnInit {
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'status', 'Actions'];
   displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
   dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource2=new MatTableDataSource<PeriodicElement1>()
   selection = new SelectionModel<PeriodicElement>(true, []);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -144,18 +146,44 @@ export class MytaskComponent implements OnInit {
 
 
   constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal) { }
-
+  specificIssueResponce:any=[
+    { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
+    { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
+    { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
+    { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
+    { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
+    { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
+    { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
+    { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
+    { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
+    { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
+    { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
+  ]
+allIssueResponce:any=[
+  { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
+  { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
+  { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
+  { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
+  { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
+  { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
+  { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
+  { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
+  { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
+  { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
+  { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
+]
   username:any
   ngOnInit() {
 
-  this._Mainservice.getSpecificIssue(this.username)
+  this.specificIssueResponce=this._Mainservice.getSpecificIssue(this.username)
 this.username=sessionStorage.getItem('name')
+this.allIssueResponce=this._Mainservice.getAllIssues()
     
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+    this.dataSource2.paginator=this.paginator
 
   }
-
   openDialog(): void {
     const dialogRef = this.dialog.open(Create_taskComponent, {
       width: '1000px',
@@ -179,4 +207,5 @@ this.username=sessionStorage.getItem('name')
       this.animal = result;
     });
   }
+
 }
