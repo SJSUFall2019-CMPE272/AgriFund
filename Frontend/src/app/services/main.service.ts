@@ -52,4 +52,46 @@ export class MainService {
         });
         
   }
+
+  deleteSpecificIssue(){
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.delete("endpoint"+'/issues'/*+issueid */,{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+            return res
+        });
+  }
+  editSpecificIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,otherInfo:any){
+    this.requestObject={
+      "issueName":issueName,
+      "category":category,
+      "description":description,
+      "problemsFaced":problemsFaced,
+      "solutionProposed":solutionProposed,
+      "otherInfo":otherInfo
+    }
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.put("endpoint"+'/issues'/*+issueid */,this.requestObject,{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+            return res
+        });
+  }
+
+  login(username:any,password:any):any{
+    this.requestObject={
+      "username":username,
+      "password":password,
+    }
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.post("endpoint"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+            return res
+        });
+  }
+
 }

@@ -56,22 +56,6 @@ status: string;
 
 }
 
-const ELEMENT_DATA: any = [
-  { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
-  { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
-  { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
-  { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
-  { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
-  { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
-  { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
-  { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
-  { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
-  { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
-  { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
-];
-
-
-
 
 @Component({
   selector: 'app-mytask',
@@ -83,7 +67,32 @@ export class MytaskComponent implements OnInit {
  animal: string;
   name: string;
 
-
+  specificIssueResponce:any=[
+    { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
+    { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
+    { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
+    { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
+    { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
+    { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
+    { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
+    { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
+    { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
+    { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
+    { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
+  ]
+  allIssueResponce=[
+  { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
+  { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
+  { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
+  { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
+  { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
+  { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
+  { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
+  { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
+  { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
+  { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
+  { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
+  ]
   private ngVersion: string = VERSION.full;
     // Only required when not passing the id in methods
     @ViewChild('stepper',{static:true}) private myStepper: MatStepper;
@@ -94,9 +103,9 @@ export class MytaskComponent implements OnInit {
   mode = new FormControl('over');
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'status', 'Actions'];
   displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
-  dataSource2=new MatTableDataSource<PeriodicElement1>()
-  selection = new SelectionModel<PeriodicElement>(true, []);
+  dataSource = new MatTableDataSource<any>(this.specificIssueResponce);
+  dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+  selection = new SelectionModel<any>(true, []);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
@@ -118,6 +127,11 @@ export class MytaskComponent implements OnInit {
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
   }
+  isAllSelected1() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource2.data.length;
+    return numSelected === numRows;
+  }
 
   screenMode() {
     this.conditionFlag = !this.conditionFlag;
@@ -135,6 +149,11 @@ export class MytaskComponent implements OnInit {
       this.selection.clear() :
       this.dataSource.data.forEach(row => this.selection.select(row));
   }
+  masterToggle1() {
+    this.isAllSelected() ?
+      this.selection.clear() :
+      this.dataSource2.data.forEach(row => this.selection.select(row));
+  }
 
   /** The label for the checkbox on the passed row */
   checkboxLabel(row?: PeriodicElement): string {
@@ -146,32 +165,7 @@ export class MytaskComponent implements OnInit {
 
 
   constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal) { }
-  specificIssueResponce:any=[
-    { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
-    { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
-    { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
-    { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
-    { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
-    { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
-    { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
-    { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
-    { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
-    { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
-    { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
-  ]
-allIssueResponce:any=[
-  { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
-  { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
-  { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
-  { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
-  { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
-  { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
-  { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
-  { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
-  { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
-  { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
-  { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
-]
+  
   username:any
   ngOnInit() {
 
@@ -182,6 +176,8 @@ this.allIssueResponce=this._Mainservice.getAllIssues()
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator=this.paginator
+    this.dataSource2.sort=this.sort
+    
 
   }
   openDialog(): void {
