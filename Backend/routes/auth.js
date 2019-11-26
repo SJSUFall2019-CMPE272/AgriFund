@@ -3,6 +3,30 @@ const User = require('../model/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
+router.post('/signup', async (req,res) => {
+   //check if user already exists
+   const emailExist = await User.findOne({email: req.body.email});
+   if(emailExist) return res.status(400).send('User already exists!');
+
+   //hash the password
+   const salt = await bcrypt.genSalt(10);
+   const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+   //create a new user
+   const user = new User({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      password: hashedPassword
+   });
+   try{
+      const savedUser = await user.save();
+      res.send({ user: user._id});
+   }catch(err){
+      res.send(400).send(err);
+   }
+});
+
 router.post('/login', async (req,res) => {
    //check if user already exists
    const user = await User.findOne({email: req.body.email});
