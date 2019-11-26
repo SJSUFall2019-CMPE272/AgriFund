@@ -148,6 +148,7 @@ export class MytaskComponent implements OnInit {
   username:any
   ngOnInit() {
 
+  this._Mainservice.getSpecificIssue(this.username)
 this.username=sessionStorage.getItem('name')
     
     this.dataSource.sort = this.sort;
