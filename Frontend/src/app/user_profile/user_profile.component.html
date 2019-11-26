@@ -1,0 +1,100 @@
+<div class="row">
+	<div class="profile-header-container">
+		<div class="profile-header-img">
+			<img class="img-circle" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" />
+			<!-- badge -->
+			<div class="rank-label-container">
+				<span class="label label-default rank-label">100 puntos</span>
+			</div>
+		</div>
+	</div>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-3">
+		<ul class="nav nav-pills nav-pills-icons flex-column" role="tablist">
+			<!--
+                                color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+                            -->
+			<li class="nav-item">
+				<a class="nav-link active" href="#dashboard-2" role="tab" data-toggle="tab">
+					General
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#schedule-2" role="tab" data-toggle="tab">
+					Password
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="col-md-8">
+		<div class="tab-content">
+			<div class="tab-pane active" id="dashboard-2">
+				<form>
+					<div class="form-group row">
+						<label for="staticEmail" class="col-sm-2 col-form-label">Name</label>
+						<div class="col-sm-10">
+							<input type="text"  class="form-control" id="staticEmail" value="Pratish">
+    				</div>
+						</div>
+						<div class="form-group row">
+							<label for="inputPassword" class="col-sm-4 col-form-label">User Name</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    						</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputPassword" class="col-sm-2 col-form-label">Time Zone</label>
+								<div class="col-sm-10">
+									<select class="form-control" id="sel1">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputPassword" class="col-sm-2 col-form-label">Date Format</label>
+								<div class="col-sm-10">
+									<select class="form-control" id="sel1">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<label for="inputPassword" class="col-sm-2 col-form-label">Time Format</label>
+								<div class="col-sm-10">
+									<select class="form-control" id="sel1">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									</select>
+								</div>
+							</div>
+				</form>
+			</div>
+			<div class="tab-pane" id="schedule-2">
+				<div class="form-group row">
+					<label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+    				</div>
+					</div>
+					<div class="form-group row">
+						<label for="inputPassword" class="col-sm-2 col-form-label"> Confirm Password</label>
+						<div class="col-sm-10">
+							<input type="password" class="form-control" id="inputPassword" placeholder="Password">
+					</div>
+						</div>
+						<button mat-raised-button color="" style="   width: 10em;
+						margin-left: 52em; background: #37c964;  color: #fff ;top:10px;" (click)=updatePassword()>Update Password</button>
+					</div>
+				</div>
+			</div>
+		</div>

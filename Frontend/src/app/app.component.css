@@ -1,0 +1,13 @@
+p {
+    font-family: Lato;
+  }
+  
+  .main_content {
+    width:100%; 
+    height: calc(100vh - 1px); 
+    background: #efefef;
+  }
+
+  .vertical-menu {
+    background: black!important;
+}

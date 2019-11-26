@@ -1,0 +1,124 @@
+body {
+    color: #4a4a4a;
+  }
+  header {
+    background-color: #F0F8FF;
+    background-image: url("https://www.commondreams.org/sites/default/files/styles/cd_large/public/views-article/farms.jpeg?itok=cTmtRuzF");
+    background-size: cover;
+    background-position: center center;
+    padding: 140px 0 100px;
+    background-repeat: no-repeat;
+   
+  }
+  
+  @media (min-width: 576px) {
+    header {
+      padding: 200px 0;
+    }
+  }
+  
+  .first-section {
+    background-color: #FBFBFB;
+  }
+  .first-section img {
+    margin-bottom: 35px;
+  }
+  
+  @media (min-width: 768px) {
+    .first-section img {
+      margin-bottom: 20px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .first-section img {
+      margin-bottom: 0;
+    }
+  }
+  
+  .section {
+    padding: 60px 0 40px;
+  }
+  
+  .first-section ul {
+    background-color: #F7F9FC;
+    border-radius: 8px;
+    margin-top: 25px;
+    padding: 30px 55px;
+  }
+  
+  .first-section li {
+    margin-bottom: 8px;	
+  }
+   
+  .second-section {
+    background-color: #fff;
+  }
+  .second-section p {
+    color: #9DA2A6;
+   
+  }
+  
+  .second-section img {
+    height: 75px;
+    margin: 25px 0 10px;
+    width: 75px;
+  }
+  
+  h1{	
+    color: #fff;
+    font-size: 36px;
+  }
+  @media (min-width: 576px) {
+    h1 {
+      font-size: 48px;
+    }
+  }
+  h2 {
+    color: #000000;
+  }
+  h6{
+   color: #fff;
+  }
+  li {
+    margin-bottom: 8px;
+  }
+  ul {
+  
+    margin-top: 25px;
+    padding: 30px 55px;
+    border-radius: 8px;
+  }
+  
+   .nav-item {
+    margin: 0px 16px;
+  }
+   .navbar-brand img {
+    height: 46px;
+    margin-right: 8px;
+    width: 46px;
+  }
+  .navbar{
+        height: 70px;
+   background-color: white;
+  }
+  
+  .third-section img {
+    margin-top: 35px;
+  }
+  
+  @media (min-width: 768px) {
+    .third-section img {
+      margin-top: 0;
+    }
+  }
+  .fourth-section {
+    background-color: #F0F8FF;
+    background-image: url("https://archive.indiaspend.com/wp-content/uploads/7272267428_6c02c3aa76_z.jpg");
+    background-repeat: repeat;
+  }
+  
+  footer {
+    background-color: #e8f4f1;
+    padding: 20px;
+  }

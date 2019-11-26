@@ -1,0 +1,47 @@
+<section class="user">
+  <div class="user_options-container">
+    <div class="user_options-text">
+      <div class="user_options-unregistered">
+        <h2 class="user_unregistered-title">Don't have an account?</h2>
+        <p class="user_unregistered-text">Click here to Signup</p>
+        <button class="user_unregistered-signup" id="signup-button">Sign up</button>
+      </div>
+
+      <div class="user_options-registered">
+        <h2 class="user_registered-title">Have an account?</h2>
+        <p class="user_registered-text">Click here to Login</p>
+        <button class="user_registered-login" id="login-button">Login</button>
+      </div>
+    </div>
+    
+    <div class="user_options-forms" id="user_options-forms">
+      <div class="user_forms-login">
+        <h2 class="forms_title">Login</h2>
+        
+        <div class="login-form">
+          <input style="width: 300px;" type="email" placeholder="Username" [(ngModel)]="name"/><br><br>
+          <input style="width: 300px;" type="password" placeholder="Password" [(ngModel)]="password"/>
+          <button mat-raised-button color="" style="  width: 10em;
+          margin-left: 10em; background: #37c964;  color: #fff ;top:100px;" (click)=login()>Log In</button>
+        </div>
+      </div>
+      <div class="user_forms-signup">
+        <h2 class="forms_title">Sign Up</h2>
+        <input type="text" placeholder="Fullname" [(ngModel)]="name" style="width: 300px;"/>
+          <br><br>
+          <input type="text" placeholder="E-Mail" [(ngModel)]="email" style="width: 300px;"/>
+          <br><br>
+          <input type="password" placeholder="Password" [(ngModel)]="password" style="width: 300px;"/>
+          <br><br>
+          <select [(ngModel)]="selectedLevel">
+              <option *ngFor="let item of data" [ngValue]="item">{{item.name}}</option>
+            </select>
+          <div>
+            <br>
+            <button mat-raised-button color="" style="  width: 10em;
+          margin-left: 10em; background: #37c964;  color: #fff ;top:1px;" (click)=login()>Sign Up</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
