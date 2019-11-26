@@ -1,3 +1,19 @@
+# how to run the app
+
+Go to the frontend directory
+
+    cd Frontend
+
+Build the docker image
+
+    docker build -t <image name> .
+
+Run the docker image
+
+    docker run -p 80:4200 --name frontend --restart always -d <image name>
+
+
+
 # Widget
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.7.
