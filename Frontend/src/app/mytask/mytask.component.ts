@@ -66,7 +66,7 @@ export class MytaskComponent implements OnInit {
 
  animal: string;
   name: string;
-
+ test="test"
   specificIssueResponceForUser:any=[
     { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
     { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
@@ -177,14 +177,46 @@ this.allIssueResponce=this._Mainservice.getAllIssues()
     this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator=this.paginator
     this.dataSource2.sort=this.sort
+    this.setValues()
     
 
   }
+  specificIssueName:any
+  specificIssueDetails:any
+  specifcIssueAttachment:any
+  specificIssueRaisedBY:any
+  specificIssueInfo:any
+  specificIssueProblemFaced:any
+  specificIssueSolutionProposed:any
+  specifcIssueOtherInformation:any
+
+  specificIssueForSpecificUserResponse:any
+
+setValues(){
+  this.specificIssueName="Crops";
+  this.specificIssueDetails="Need money for crops";
+  this.specifcIssueAttachment="Issue attachments";
+  this.specificIssueRaisedBY="Farmer1";
+  this.specificIssueInfo="Farmer contact email";
+  this.specificIssueProblemFaced="not able to plant crops";
+  this.specificIssueSolutionProposed="need money to buy crops";
+  this.specifcIssueOtherInformation="other info"
 
 
+  this.specificIssueForSpecificUserResponse=[
+    {"issueName" : this.specificIssueName},
+    {"issueDetails":this.specificIssueDetails},
+    {"issueAttachments":this.specifcIssueAttachment},
+    {"issueRaisedBy":this.specificIssueRaisedBY},
+    {"issueInfo":this.specificIssueInfo},
+    {"issueProblemFaced":this.specificIssueProblemFaced},
+    {"issueSolutionProposed":this.specificIssueSolutionProposed},
+    {"issueOtherInformation":this.specifcIssueOtherInformation}
+  ]
+console.log(this.specificIssueForSpecificUserResponse)
+}
 
-  specificIssueName:any;specificIssueDetails:any;specifcIssueAttachment:any;specificIssueRaisedBY:any;specificIssueInfo:any;specificIssueProblemFaced:any;specificIssueSolutionProposed:any;specifcIssueOtherInformation:any
-
+  
   seletedissue:any
   openDialog(): void {
     const dialogRef = this.dialog.open(Create_taskComponent, {
