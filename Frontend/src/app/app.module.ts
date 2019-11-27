@@ -83,7 +83,8 @@ import { EditIssueComponent } from './edit-issue/edit-issue.component';
   ],
   entryComponents: [
 		Create_taskComponent,
-    User_profileComponent
+    User_profileComponent,
+    EditIssueComponent
 	],
   imports: [
     FormsModule,

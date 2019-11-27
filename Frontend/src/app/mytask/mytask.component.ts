@@ -16,7 +16,6 @@ import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatStepper } from '@angular/material';
-import { timingSafeEqual } from 'crypto';
 
 const colors: any = {
   red: {

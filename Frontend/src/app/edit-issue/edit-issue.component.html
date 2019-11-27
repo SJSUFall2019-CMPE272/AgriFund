@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Create Issue</h1>
+<h1 mat-dialog-title>Edit Issue</h1>
 <hr>
 <div mat-dialog-content>
 	<form role="form" name="form" #f="ngForm">
@@ -8,7 +8,7 @@
 					<label class="control-label required">Issue Name</label>
 					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" required class="form-control" [(ngModel)]="data.ratePlan"
                         placeholder="Enter Value" />
-					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter value</span>
+					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter here</span>
 				</div>
 			</div>
 
@@ -18,8 +18,7 @@
 
 					<select id="Category" name="Category" #ca="ngModel" [(ngModel)]="data.Category" required
                       class="form-control" value="{{data.Category}}">
-                         <option value="Worldwide"> Agriculture </option>
-                         <option value="Voicemail"> Donation </option>
+                         <option value="Agriculture"> Agriculture </option>
                     </select>
 					<!-- <input  type="text" id="AddonName" #i="ngModel" disabled name="id" required class="form-control" [(ngModel)]="data.id"
                         placeholder="Enter Value" /> -->
@@ -75,7 +74,7 @@
 										<div class="form-group">
 											<label class="control-label required">Description</label>
 											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
-                        placeholder="Enter Value" />
+                        placeholder="Enter Here" />
 											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter Details</span>
 										</div>
 									</div>
@@ -99,7 +98,7 @@
 										<div class="form-group">
 											<label class="control-label required">Category</label>
 											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
-                        placeholder="Enter Value" />
+                        placeholder="Enter Here" />
 											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter value</span>
 										</div>
 									</div>
@@ -116,7 +115,7 @@
 				<div class="form-group">
 					<label class="control-label required">Other Information</label>
 					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
-                        placeholder="Enter Value" />
+                        placeholder="Enter Here" />
 					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Enter here</span>
 				</div>
 			</div>
