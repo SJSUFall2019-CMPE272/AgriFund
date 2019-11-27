@@ -67,7 +67,7 @@ export class MytaskComponent implements OnInit {
  animal: string;
   name: string;
 
-  specificIssueResponce:any=[
+  specificIssueResponceForUser:any=[
     { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
     { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
     { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
@@ -103,7 +103,7 @@ export class MytaskComponent implements OnInit {
   mode = new FormControl('over');
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'status', 'Actions'];
   displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
-  dataSource = new MatTableDataSource<any>(this.specificIssueResponce);
+  dataSource = new MatTableDataSource<any>(this.specificIssueResponceForUser);
   dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
   selection = new SelectionModel<any>(true, []);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -163,13 +163,13 @@ export class MytaskComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-
+  specificIssueResponce:any
   constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal) { }
   
   username:any
   ngOnInit() {
 
-  this.specificIssueResponce=this._Mainservice.getSpecificIssue(this.username)
+  this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
 this.username=sessionStorage.getItem('name')
 this.allIssueResponce=this._Mainservice.getAllIssues()
     
@@ -180,6 +180,11 @@ this.allIssueResponce=this._Mainservice.getAllIssues()
     
 
   }
+
+
+
+  specificIssueName:any;specificIssueDetails:any;specifcIssueAttachment:any;specificIssueRaisedBY:any;specificIssueInfo:any;specificIssueProblemFaced:any;specificIssueSolutionProposed:any;specifcIssueOtherInformation:any
+
   seletedissue:any
   openDialog(): void {
     const dialogRef = this.dialog.open(Create_taskComponent, {

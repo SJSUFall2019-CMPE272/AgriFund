@@ -32,7 +32,7 @@ export class MainService {
             console.log(res);
         });
   }
-  getSpecificIssue(userId:AnalyserOptions):any{
+  getAllIssueForUser(userId:AnalyserOptions):any{
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
      this.http.get("endpoint"+'/{'+userId+'}',{headers: header}).subscribe((res) => {
@@ -41,6 +41,15 @@ export class MainService {
             return res
         });
         
+  }
+  getIssueForSpecificUser(userId:any,issueId:any):any{
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.get("endpoint"+'/{'+userId+'}'+'/{'+issueId+'}',{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+            return res
+        });
   }
   getAllIssues():any{
     let header = new HttpHeaders();
@@ -62,6 +71,7 @@ export class MainService {
             return res
         });
   }
+  
   editSpecificIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,otherInfo:any){
     this.requestObject={
       "issueName":issueName,
