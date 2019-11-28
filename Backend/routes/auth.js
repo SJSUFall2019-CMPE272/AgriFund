@@ -14,14 +14,13 @@ router.post('/signup', async (req,res) => {
 
    //create a new user
    const user = new User({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
+      fullname: req.body.fullname,
       email: req.body.email,
       password: hashedPassword
    });
    try{
       const savedUser = await user.save();
-      res.send({ user: user._id});
+      res.send( savedUser );
    }catch(err){
       res.send(400).send(err);
    }
