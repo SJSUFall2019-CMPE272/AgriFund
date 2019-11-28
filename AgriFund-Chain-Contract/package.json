@@ -1,6 +1,6 @@
 {
     "name": "fabagrifund",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "FabAgriFund contract implemented in JavaScript",
     "main": "index.js",
     "engines": {

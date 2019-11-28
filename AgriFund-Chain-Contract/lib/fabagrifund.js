@@ -18,6 +18,9 @@ class FabAgriFund extends Contract {
                 description: 'borewell description',
                 requested_amount: 500,
                 raised_amount: 200,
+                problem_faced: 'irrigation problem',
+                solution_proposed: 'needed funds for borewell',
+                status: 'open',
                 donators:[
                     {
                         donator_name: 'ramya',
@@ -38,6 +41,9 @@ class FabAgriFund extends Contract {
                 description: 'fertilizers description',
                 requested_amount: 1000,
                 raised_amount: 200,
+                problem_faced: 'fertilizers',
+                solution_proposed: 'needed funds for fertilizers',
+                status: 'open',
                 donators:[
                     {
                         donator_name: 'ramya',
@@ -70,7 +76,7 @@ class FabAgriFund extends Contract {
         return issueAsBytes.toString();
     }
 
-    async createFarmerIssue(ctx, issueID, farmer_name, issue, issue_created_date, description, requested_amount, raised_amount) {
+    async createFarmerIssue(ctx, issueID, farmer_name, issue, issue_created_date, description, requested_amount, raised_amount, problem_faced, solution_proposed, status) {
         console.info('============= START : Create Issue ===========');
 
         const farmer_issue = {
@@ -81,6 +87,9 @@ class FabAgriFund extends Contract {
             description,
             requested_amount:parseInt(requested_amount),
             raised_amount:parseInt(raised_amount),
+            problem_faced,
+            solution_proposed,
+            status,
             donators:[]
         };
 
@@ -160,6 +169,39 @@ class FabAgriFund extends Contract {
 
         await ctx.stub.putState(issueID, Buffer.from(JSON.stringify(farmer_issue)));
         console.info('============= END : addDonationToAnIssue ===========');
+    }
+
+    async closeAnIssue(ctx, issueID, status) {
+        console.info('============= START : closeAnIssue ===========');
+
+        const issueAsBytes = await ctx.stub.getState(issueID); // get the farmer_issue from chaincode state
+        if (!issueAsBytes || issueAsBytes.length === 0) {
+            throw new Error(`${issueID} does not exist`);
+        }
+        const farmer_issue = JSON.parse(issueAsBytes.toString());
+
+        farmer_issue.status = status;
+       
+        await ctx.stub.putState(issueID, Buffer.from(JSON.stringify(farmer_issue)));
+        console.info('============= END : closeAnIssue ===========');
+    }
+
+    async updateAnIssue(ctx, issueID, description, requested_amount, problem_faced, solution_proposed) {
+        console.info('============= START : updateAnIssue ===========');
+
+        const issueAsBytes = await ctx.stub.getState(issueID); // get the farmer_issue from chaincode state
+        if (!issueAsBytes || issueAsBytes.length === 0) {
+            throw new Error(`${issueID} does not exist`);
+        }
+        const farmer_issue = JSON.parse(issueAsBytes.toString());
+
+        farmer_issue.description = description;
+        farmer_issue.requested_amount = parseInt(requested_amount);
+        farmer_issue.problem_faced = problem_faced;
+        farmer_issue.solution_proposed = solution_proposed;
+
+        await ctx.stub.putState(issueID, Buffer.from(JSON.stringify(farmer_issue)));
+        console.info('============= END : updateAnIssue ===========');
     }
 
 }
