@@ -38,15 +38,31 @@ app.post('/issues', (req, res) => {
             let issuesRecord = JSON.parse(response);
             let numIssues = issuesRecord.length;
             let newKey = 'ISSUE' + numIssues;
-            network.createFarmerIssue(newKey, req.body.farmer_name, req.body.issue, req.body.issue_created_date, req.body.description, req.body.requested_amount, req.body.raised_amount)
+            network.createFarmerIssue(newKey, req.body.farmer_name, req.body.issue, req.body.issue_created_date,
+                 req.body.description, req.body.requested_amount, req.body.raised_amount, req.body.problem_faced, req.body.solution_proposed)
                 .then((response) => {
                     res.send(response);
                 });
         });
 });
 
-app.post('/donate', (req, res) => {
-    network.addDonationToAnIssue(req.body.key, req.body.donator_name,req.body.donated_amount, req.body.donated_date )
+app.post('/donate/:issue_id', (req, res) => {
+    network.addDonationToAnIssue(req.params.issue_id, req.body.donator_name,req.body.donated_amount, req.body.donated_date )
+        .then((response) => {
+            res.send(response);
+        });
+});
+
+app.put('/issues/:issue_id', (req, res) => {
+    network.updateAnIssue(req.params.issue_id, req.body.description, req.body.requested_amount, req.body.problem_faced, req.body.solution_proposed )
+        .then((response) => {
+            res.send(response);
+        });
+});
+
+app.post('/close/:issue_id', (req, res) => {
+    console.log(req.params.issue_id);
+    network.closeAnIssue(req.params.issue_id)
         .then((response) => {
             res.send(response);
         });

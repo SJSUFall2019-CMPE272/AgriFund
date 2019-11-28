@@ -20,7 +20,8 @@ const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
 const ccp = JSON.parse(ccpJSON);
 
 // create farmer issue transaction
-exports.createFarmerIssue = async function(key, farmer_name, issue, issue_created_date, description, requested_amount, raised_amount) {
+exports.createFarmerIssue = async function(key, farmer_name, issue, issue_created_date, description,
+     requested_amount, raised_amount, problem_faced, solution_proposed) {
     let response = {};
     try {
 
@@ -50,7 +51,8 @@ exports.createFarmerIssue = async function(key, farmer_name, issue, issue_create
 
         // Submit the specified transaction.
         // createFarmerIssue transaction - requires 5 argument, ex: ('createFarmerIssue', 'ISSUE4', 'Tom', 'Crops', '11-24-1029', 'Crops description', '100', '0')
-        await contract.submitTransaction('createFarmerIssue', key, farmer_name, issue, issue_created_date, description, requested_amount, raised_amount);
+        await contract.submitTransaction('createFarmerIssue', key, farmer_name, issue, issue_created_date, description,
+         requested_amount, raised_amount, problem_faced, solution_proposed, "open");
         console.log('Transaction has been submitted');
 
         // Disconnect from the gateway.
@@ -200,6 +202,100 @@ exports.querySingleFarmerIssue = async function(key) {
 
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
+        response.error = error.message;
+        return response;
+    }
+};
+
+// edit an existing issue 
+exports.updateAnIssue = async function(key, description, requested_amount, problem_faced, solution_proposed) {
+    let response = {};
+    try {
+
+        // Create a new file system based wallet for managing identities.
+        const walletPath = path.join(process.cwd(), '/wallet');
+        const wallet = new FileSystemWallet(walletPath);
+        console.log(`Wallet path: ${walletPath}`);
+
+        // Check to see if we've already enrolled the user.
+        const userExists = await wallet.exists(userName);
+        if (!userExists) {
+            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('Run the registerUser.js application before retrying');
+            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            return response;
+        }
+
+        // Create a new gateway for connecting to our peer node.
+        const gateway = new Gateway();
+        await gateway.connect(ccp, { wallet, identity: userName, discovery: gatewayDiscovery });
+
+        // Get the network (channel) our contract is deployed to.
+        const network = await gateway.getNetwork('mychannel');
+
+        // Get the contract from the network.
+        const contract = network.getContract('fabagrifund');
+
+        // Submit the specified transaction.
+        // updateAnIssue transaction - requires 4 args , ex: ('updateAnIssue', 'description', '10', 'crops', 'need funds')
+        await contract.submitTransaction('updateAnIssue', key, description, requested_amount, problem_faced, solution_proposed);
+        console.log('Transaction has been submitted');
+
+        // Disconnect from the gateway.
+        await gateway.disconnect();
+
+        response.msg = 'updateAnIssue Transaction has been submitted';
+        return response;
+
+    } catch (error) {
+        console.error(`Failed to submit transaction: ${error}`);
+        response.error = error.message;
+        return response;
+    }
+};
+
+//close an existing issue
+exports.closeAnIssue = async function(key) {
+    let response = {};
+    try {
+
+        // Create a new file system based wallet for managing identities.
+        const walletPath = path.join(process.cwd(), '/wallet');
+        const wallet = new FileSystemWallet(walletPath);
+        console.log(`Wallet path: ${walletPath}`);
+
+        // Check to see if we've already enrolled the user.
+        const userExists = await wallet.exists(userName);
+        if (!userExists) {
+            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('Run the registerUser.js application before retrying');
+            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            return response;
+        }
+
+        // Create a new gateway for connecting to our peer node.
+        const gateway = new Gateway();
+        await gateway.connect(ccp, { wallet, identity: userName, discovery: gatewayDiscovery });
+
+        // Get the network (channel) our contract is deployed to.
+        const network = await gateway.getNetwork('mychannel');
+
+        // Get the contract from the network.
+        const contract = network.getContract('fabagrifund');
+
+        // Submit the specified transaction.
+        // closeAnIssue transaction - requires 2 args , ex: ('closeAnIssue', 'ISSUE1', 'closed')
+        await contract.submitTransaction('closeAnIssue', key, "closed");
+        console.log('Transaction has been submitted');
+
+        // Disconnect from the gateway.
+        await gateway.disconnect();
+
+        response.msg = 'closeAnIssue Transaction has been submitted';
+        return response;
+
+    } catch (error) {
+        console.error(`Failed to submit transaction: ${error}`);
         response.error = error.message;
         return response;
     }
