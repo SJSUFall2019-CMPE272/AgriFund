@@ -10,12 +10,12 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
   styleUrls: ['./edit-issue.component.css']
 })
 export class EditIssueComponent implements OnInit {
-
+  issueName:any;category:any;description:any;problemsFaced:any;solutionProposed:any;otherInfo:any
   constructor( private  elemRef: ElementRef,
     public dialogRef: MatDialogRef<EditIssueComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
   
     ngOnInit() { 
-    
+    //get
     }
   
 

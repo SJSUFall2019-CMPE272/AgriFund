@@ -34,10 +34,11 @@ userForms.classList.add('bounceRight')
   }
   userType="farmer"
 login(){
-  this.mainService.login(this.name,this.password)
+  //this.mainService.login(this.name,this.password)
   this.router.navigate(['./dashboard'])
 }
 signup(){
-  this.mainService.signup(this.name,this.password,this.email,)
+  //this.mainService.signup(this.name,this.password,this.email,)
+  this.router.navigate(['./dashboard'])
 }
 }

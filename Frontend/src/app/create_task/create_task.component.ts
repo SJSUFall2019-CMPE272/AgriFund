@@ -19,7 +19,7 @@ export class Create_taskComponent implements OnInit {
   ngOnInit() { 
 	
   }
-  issueName:any;category:any;description:any;problemsFaced:any;solutionProposed:any;otherInfo:any
+  issueName:any;category:any;description:any;problemsFaced:any;solutionProposed:any;amtReq:any
    onNoClick(): void {
     this.dialogRef.close();
   }

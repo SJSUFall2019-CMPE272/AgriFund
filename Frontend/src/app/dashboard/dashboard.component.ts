@@ -37,6 +37,7 @@ getAllIssuesForSpecificUsersResponce:any
     this.username=sessionStorage.getItem('name')
     this._Mainservice.getAllIssueForUser(this.username)
   }
-  
-
+  getMyissues(){
+    this._Mainservice.getAllIssueForUser(this.username)
+  }
 }

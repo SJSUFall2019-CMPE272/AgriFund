@@ -6,20 +6,14 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					<label class="control-label required">Issue Name</label>
-					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" required class="form-control" [(ngModel)]="data.ratePlan"
-                        placeholder="Enter Value" />
+					<label>Value entered</label>
 					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter here</span>
 				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="form-group">
-					<label class="control-label required">Category</label>
-
-					<select id="Category" name="Category" #ca="ngModel" [(ngModel)]="data.Category" required
-                      class="form-control" value="{{data.Category}}">
-                         <option value="Agriculture"> Agriculture </option>
-                    </select>
+					<label>Category selected</label>
 					<!-- <input  type="text" id="AddonName" #i="ngModel" disabled name="id" required class="form-control" [(ngModel)]="data.id"
                         placeholder="Enter Value" /> -->
 					<span class="help-block" *ngIf="!ca.valid && ca.touched"> Please Enter value</span>
@@ -113,7 +107,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="form-group">
-					<label class="control-label required">Other Information</label>
+					<label class="control-label required">Amount Required($)</label>
 					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
                         placeholder="Enter Here" />
 					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Enter here</span>
