@@ -17,6 +17,11 @@ export class Login1Component implements OnInit {
   password:any
   selectedLevel:any
   ngOnInit() {
+    if(sessionStorage.getItem('loggedIn')==='true')
+    {
+    sessionStorage.setItem('loggedIn','false')
+    location.reload()
+    }
 
 const signupButton = document.getElementById('signup-button'),
 loginButton = document.getElementById('login-button'),
@@ -36,8 +41,10 @@ userForms.classList.add('bounceRight')
 login(){
   sessionStorage.setItem('userType','donor')
   sessionStorage.setItem('loggedIn','true')
+  sessionStorage.setItem('flag','true')
+  location.reload()
   //this.mainService.login(this.name,this.password)
-  this.router.navigate(['./dashboard'])
+  //this.router.navigate(['./dashboard'])
 }
 signup(){
   sessionStorage.setItem('loggedIn','true')
