@@ -1,0 +1,9 @@
+{
+    "connection_file": "mychannel_fabagrifund_profile.json",
+    "appAdmin": "app-admin",
+    "appAdminSecret": "app-adminpw",
+    "orgMSPID": "org1msp",
+    "caName": "n1258e1-org1ca.myclusterramya-c93f9b1eb8fb6030e3bfb95e4a7b2254-0001.us-east.containers.appdomain.cloud:7054",
+    "userName": "user1",
+    "gatewayDiscovery": { "enabled": true, "asLocalhost": false }
+}
