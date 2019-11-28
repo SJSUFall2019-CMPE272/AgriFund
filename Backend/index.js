@@ -13,7 +13,7 @@ dotenv.config();
 mongoose.connect(
     process.env.DB_CONNECT,
     { useNewUrlParser: true },
-    () => console.log('Connected to db!')
+    () => console.log('Connected to the database!')
 );
 
 //middleware
@@ -22,6 +22,6 @@ app.use(express.json());
 //route middleware
 app.use('/', route);
 app.use('/posts', postRoute);
-app.use('/getissues', issueRoute);
+app.use('/', issueRoute);
 
 app.listen(3000, () => console.log('Server is up and running!'));
