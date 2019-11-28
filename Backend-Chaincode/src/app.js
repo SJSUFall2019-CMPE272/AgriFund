@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.get('/issues', (req, res) => {
+app.get('/api/issues', (req, res) => {
     network.queryAllFarmerIssues()
         .then((response) => {
             let issuesRecord = JSON.parse(response);
@@ -21,7 +21,7 @@ app.get('/issues', (req, res) => {
         });
 });
 
-app.get('/issues/:issue_id', (req, res) => {
+app.get('/api/issues/:issue_id', (req, res) => {
     console.log(req.params.issue_id);
     network.querySingleFarmerIssue(req.params.issue_id)
         .then((response) => {
@@ -30,7 +30,7 @@ app.get('/issues/:issue_id', (req, res) => {
         });
 });
 
-app.post('/issues', (req, res) => {
+app.post('/api/issues', (req, res) => {
     console.log(req.body);
     network.queryAllFarmerIssues()
         .then((response) => {
@@ -46,25 +46,41 @@ app.post('/issues', (req, res) => {
         });
 });
 
-app.post('/donate/:issue_id', (req, res) => {
+app.post('/api/donate/:issue_id', (req, res) => {
     network.addDonationToAnIssue(req.params.issue_id, req.body.donator_name,req.body.donated_amount, req.body.donated_date )
         .then((response) => {
             res.send(response);
         });
 });
 
-app.put('/issues/:issue_id', (req, res) => {
+app.put('/api/issues/:issue_id', (req, res) => {
     network.updateAnIssue(req.params.issue_id, req.body.description, req.body.requested_amount, req.body.problem_faced, req.body.solution_proposed )
         .then((response) => {
             res.send(response);
         });
 });
 
-app.post('/close/:issue_id', (req, res) => {
+app.post('/api/close/:issue_id', (req, res) => {
     console.log(req.params.issue_id);
     network.closeAnIssue(req.params.issue_id)
         .then((response) => {
             res.send(response);
+        });
+});
+
+app.get('/api/farmers/:farmer_name', (req, res) => {
+    console.log(req.params.farmer_name);
+    network.queryAllFarmerIssues()
+        .then((response) => {
+            let farmersRecords =  JSON.parse(response);
+            function getFarmerData(item, index){
+                if(item.Record.farmer_name == req.params.farmer_name){
+                    return item;
+                }
+            }
+            const list =  farmersRecords.map(x => getFarmerData(x));
+            res.send(list.filter(n => n));
+            
         });
 });
 
