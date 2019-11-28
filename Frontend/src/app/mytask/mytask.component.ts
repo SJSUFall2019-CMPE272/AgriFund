@@ -121,6 +121,7 @@ export class MytaskComponent implements OnInit {
 
 
   activeDayIsOpen: boolean = true;
+  specificIssueDetails: any;
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -177,14 +178,13 @@ this.allIssueResponce=this._Mainservice.getAllIssues()
     
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    this.dataSource2.paginator=this.paginator
-    this.dataSource2.sort=this.sort
+    //this.dataSource2.paginator=this.paginator
+    //this.dataSource2.sort=this.sort
     this.setValues()
     
 
   }
   specificIssueName:any
-  specificIssueDetails:any
   specifcIssueAttachment:any
   specificIssueRaisedBY:any
   specificIssueInfo:any
@@ -206,14 +206,16 @@ setValues(){
 
 
   this.specificIssueForSpecificUserResponse=[
-    {"issueName" : this.specificIssueName},
-    {"issueDetails":this.specificIssueDetails},
-    {"issueAttachments":this.specifcIssueAttachment},
-    {"issueRaisedBy":this.specificIssueRaisedBY},
-    {"issueInfo":this.specificIssueInfo},
-    {"issueProblemFaced":this.specificIssueProblemFaced},
-    {"issueSolutionProposed":this.specificIssueSolutionProposed},
-    {"issueOtherInformation":this.specifcIssueOtherInformation}
+    {
+    "issueName" : this.specificIssueName,
+    "issueDetails":this.specificIssueDetails,
+    "issueAttachments":this.specifcIssueAttachment,
+    "issueRaisedBy":this.specificIssueRaisedBY,
+    "issueInfo":this.specificIssueInfo,
+    "issueProblemFaced":this.specificIssueProblemFaced,
+    "issueSolutionProposed":this.specificIssueSolutionProposed,
+    "issueOtherInformation":this.specifcIssueOtherInformation
+}
   ]
 console.log(this.specificIssueForSpecificUserResponse)
 }
@@ -263,7 +265,7 @@ console.log(this.specificIssueForSpecificUserResponse)
 
     
 
-    // window.alert(issueID)
+    //window.alert(issueID)
 console.log(issueID)
   }
 

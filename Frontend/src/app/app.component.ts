@@ -23,7 +23,10 @@ export class AppComponent {
     this.onSideNavChange = res;
   })
   }
-
+  loggedIn:any='false'
+  ngOnInit() { 
+ this.loggedIn=sessionStorage.getItem('loggedIn')
+  }
   updateHeaderFlag(value) {
   this.isHeaderLoaded = value;
   

@@ -1,4 +1,4 @@
-<div>
+<div *ngIf="loggedIn==='true'">
     <app-header-new [sidenav]="leftSidenav"></app-header-new>
   
     <mat-sidenav-container class="sidenav-container">
@@ -15,4 +15,9 @@
       </mat-sidenav-content>
     </mat-sidenav-container>
   
+  </div>
+
+
+  <div *ngIf="loggedIn==='false'">
+       <router-outlet></router-outlet>
   </div>

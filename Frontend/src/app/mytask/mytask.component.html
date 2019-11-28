@@ -47,7 +47,7 @@ font-size: 14px; top: -4px;"></i>
 						<mat-card-content>
 							
 <p>
-	{{specificIssueForSpecificUserResponse.issueName}}
+	{{specificIssueForSpecificUserResponse[0].issueName}}
 </p>
 
 
@@ -64,7 +64,7 @@ font-size: 14px; top: -4px;"></i>
 						</mat-card-header>
 						<mat-card-content>
 						<p>
-							{{specificIssueForSpecificUserResponse.issueDetails}}
+							{{specificIssueForSpecificUserResponse[0].issueDetails}}
 						</p>
 
 
@@ -82,7 +82,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-title class="blue fs-16">Attachment</mat-card-title>
 						</mat-card-header>
 						<mat-card-content>
-							<p>{{specificIssueForSpecificUserResponse.issueAttachments}}</p>
+							<p>{{specificIssueForSpecificUserResponse[0].issueAttachments}}</p>
 
 
 
@@ -107,7 +107,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-<p>{{specificIssueForSpecificUserResponse.issueRaisedBy}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].issueRaisedBy}}</p>
 
 
 
@@ -124,7 +124,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 						
 
-<p>{{specificIssueForSpecificUserResponse.issueInfo}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].issueInfo}}</p>
 
 
 
@@ -145,7 +145,7 @@ font-size: 14px; top: -4px;"></i>
 
 
 
-<p>{{specificIssueForSpecificUserResponse.issueProblemFaced}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].issueProblemFaced}}</p>
 
 
 							</mat-card-content>
@@ -164,7 +164,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-<p>{{specificIssueForSpecificUserResponse.issueSolutionProposed}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].issueSolutionProposed}}</p>
 
 
 							</mat-card-content>
@@ -182,7 +182,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-<p>{{specificIssueForSpecificUserResponse.issueOtherInformation}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].issueOtherInformation}}</p>
 
 
 								
@@ -763,13 +763,13 @@ font-size: 14px; top: -4px;"></i>
 			
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element"> {{element.position}} </td>
+				<td mat-cell *matCellDef="let element" (click)="getissue(element.position, sidenav)"> {{element.position}} </td>
 			</ng-container>
 
 			
 			<ng-container matColumnDef="name">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Name </th>
-				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle()"> {{element.name}} </td>
+				<td mat-cell *matCellDef="let element" > {{element.name}} </td>
 			</ng-container>
 
 		
