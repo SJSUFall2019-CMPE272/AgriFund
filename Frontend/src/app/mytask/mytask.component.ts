@@ -16,6 +16,7 @@ import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatStepper } from '@angular/material';
+import { DonateComponent } from '../donate/donate.component';
 
 const colors: any = {
   red: {
@@ -240,5 +241,19 @@ console.log(this.specificIssueForSpecificUserResponse)
       this.animal = result;
     });
   }
+
+
+  openDialogDonate(): void {
+    const dialogRef = this.dialog.open(DonateComponent, {
+      width: '550px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+
 
 }

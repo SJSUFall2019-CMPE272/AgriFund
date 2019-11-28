@@ -49,6 +49,8 @@ import {MainService} from './services/main.service';
 import { LandingComponent } from './landing/landing.component';
 import { Login1Component } from './login1/login1.component';
 import { EditIssueComponent } from './edit-issue/edit-issue.component';
+import { DonateComponent } from './donate/donate.component';
+import { ErrorComponent } from './error/error.component';
 /* Widget Import Ends */
 
 @NgModule({
@@ -78,7 +80,9 @@ import { EditIssueComponent } from './edit-issue/edit-issue.component';
 
     LandingComponent,
     Login1Component,
-    EditIssueComponent
+    EditIssueComponent,
+    DonateComponent,
+    ErrorComponent,
 
   ],
   entryComponents: [
