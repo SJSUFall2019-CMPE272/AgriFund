@@ -1,7 +1,7 @@
 const issueRouter = require('express').Router();
 const Issue = require('../model/Issue');
 
-issueRouter.post('/postissues', async (req,res) => {
+issueRouter.post('/issues', async (req,res) => {
     //check if issue already exists
     const issueExist = await Issue.findOne({issueName: req.body.issueName});
     if(issueExist) return res.status(400).send('Issue already exists!');
@@ -23,7 +23,7 @@ issueRouter.post('/postissues', async (req,res) => {
     }
 });
 
-issueRouter.get('/', async (req, res) => {
+issueRouter.get('/issues', async (req, res) => {
     try {
         const issues = await Issue.find();
         await res.json(issues);
