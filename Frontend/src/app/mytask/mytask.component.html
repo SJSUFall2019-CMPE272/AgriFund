@@ -1,4 +1,5 @@
-<!-- <mat-sidenav position="end" #sidenav [mode]="over"
+<body *ngIf="userType==='donor'"> 
+	<mat-sidenav position="end" #sidenav [mode]="over"
 	[ngClass]="{'customWidth1' : conditionFlag, 'customWidth2' : !conditionFlag }">
 	<div class="row">
 		<div [ngClass]="{'col-md-12' : conditionFlag, 'col-md-5' : !conditionFlag }">
@@ -262,13 +263,13 @@ font-size: 14px; top: -4px;"></i>
 			
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element"> {{element.position}} </td>
+				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle();getissue(element.position)"> {{element.position}} </td>
 			</ng-container>
 
 			
 			<ng-container matColumnDef="name">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Name </th>
-				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle()"> {{element.name}} </td>
+				<td mat-cell *matCellDef="let element" > {{element.name}} </td>
 			</ng-container>
 
 		
@@ -368,12 +369,12 @@ font-size: 14px; top: -4px;"></i>
 
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element"> {{element.position}} </td>
+				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle()"> {{element.position}} </td>
 			</ng-container>
 
 			<ng-container matColumnDef="name">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Name </th>
-				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle()"> {{element.name}} </td>
+				<td mat-cell *matCellDef="let element" > {{element.name}} </td>
 			</ng-container>
 			<ng-container matColumnDef="Due">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
@@ -405,7 +406,7 @@ font-size: 14px; top: -4px;"></i>
 
 	</mat-tab>
 
-</mat-tab-group> -->
+</mat-tab-group></body>
 
 
 
@@ -507,7 +508,7 @@ font-size: 14px; top: -4px;"></i>
 
 
 
-
+<body *ngIf="userType==='farmer'">
 <mat-sidenav position="end" #sidenav [mode]="over"
 	[ngClass]="{'customWidth1' : conditionFlag, 'customWidth2' : !conditionFlag }">
 	<div class="row">
@@ -921,3 +922,4 @@ font-size: 14px; top: -4px;"></i>
 	</mat-tab>
 
 </mat-tab-group> 
+</body>

@@ -64,6 +64,7 @@ status: string;
 })
 export class MytaskComponent implements OnInit {
 
+  userType:any
  animal: string;
   name: string;
  test="test"
@@ -168,7 +169,8 @@ export class MytaskComponent implements OnInit {
   
   username:any
   ngOnInit() {
-
+    this.userType=sessionStorage.getItem('userType')
+    
   this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
 this.username=sessionStorage.getItem('name')
 this.allIssueResponce=this._Mainservice.getAllIssues()
@@ -255,5 +257,8 @@ console.log(this.specificIssueForSpecificUserResponse)
     });
   }
 
+  getissue(issueID){
+console.log(issueID)
+  }
 
 }

@@ -99,9 +99,29 @@ export class MainService {
     header.append('Content-Type', 'application/json');
      this.http.post("endpoint"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
+            sessionStorage.setItem('name',username)
+  sessionStorage.setItem('userType',res['userType'])
             console.log(res);
+            this.router.navigate(['./dashboard'])
             return res
         });
   }
+  signup(username:any,password:any,email:any){
 
+    this.requestObject={
+      "username":username,
+      "email":email,
+      "password":password,
+    }
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.post("endpoint"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
+            //tostr message
+            sessionStorage.setItem('name',username)
+  sessionStorage.setItem('userType',res['userType'])
+            console.log(res);
+            this.router.navigate(['./dashboard'])
+            return res
+        });
+  }
 }
