@@ -263,7 +263,7 @@ font-size: 14px; top: -4px;"></i>
 			
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle();getissue(element.position)"> {{element.position}} </td>
+				<td mat-cell *matCellDef="let element" (click)="getissue(element.position, sidenav)"> {{element.position}} </td>
 			</ng-container>
 
 			

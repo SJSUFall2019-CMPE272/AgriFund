@@ -56,7 +56,11 @@
               <mat-icon>close</mat-icon>
             </button>
           </mat-form-field>
-          <mat-select [(value)]="selectedLevel">
+          <mat-select [(value)]="selectedLevel"  style="
+          position: relative;
+          /* margin-top: -4em; */
+          top: -2em;
+      ">
             <mat-option value="farmer">Farmer</mat-option>
             <mat-option value="donor">Donor</mat-option>
           </mat-select>

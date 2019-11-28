@@ -257,7 +257,13 @@ console.log(this.specificIssueForSpecificUserResponse)
     });
   }
 
-  getissue(issueID){
+  getissue(issueID:any, sidenav){
+
+    sidenav.toggle();
+
+    
+
+    // window.alert(issueID)
 console.log(issueID)
   }
 

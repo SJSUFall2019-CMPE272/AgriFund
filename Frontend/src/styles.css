@@ -38,3 +38,11 @@ body {
   outline: none !important;
   cursor: pointer;
 }
+
+
+
+::ng-deep mat-dialog-container#mat-dialog-1 {
+
+  background: #171b24;
+    
+}

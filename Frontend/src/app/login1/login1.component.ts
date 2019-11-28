@@ -34,6 +34,7 @@ userForms.classList.add('bounceRight')
   }
   userType="farmer"
 login(){
+  sessionStorage.setItem('userType','farmer')
   //this.mainService.login(this.name,this.password)
   this.router.navigate(['./dashboard'])
 }
