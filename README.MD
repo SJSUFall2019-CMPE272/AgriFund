@@ -30,11 +30,11 @@ NodeJS, Angular8, AWS, Docker, AWS APIGateway, MongoDB.
 
 	ARCHITECTURE
 
-![Architecture Diagram (3)](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/Architecture%20Diagram%20(3).jpg)
+![Architecture Diagram ](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/ArchitectureDiagram.jpg)
 
 	BLOCK-CHAIN ARCHITECTURE
 	
 	
-![Image 10-7-19 at 11 04 PM (1)](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/BlockChain.jpg)
+![Blockchain flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/BlockChain.jpg)
 
 
