@@ -26,7 +26,6 @@ app.use(express.json());
 //route middleware
 app.use('/', route);
 app.use('/posts', postRoute);
-app.use('/getissues', issueRoute);
 app.use('/', issueRoute);
 app.use('/', donorRoute);
 // app.use('/donors/:donorName', donorRoute);
