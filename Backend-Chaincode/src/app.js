@@ -6,6 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 let network = require('./fabric/network.js');
+let registerUser = require('./fabric/registerUser.js');
 
 const app = express();
 app.use(morgan('combined'));
@@ -54,7 +55,7 @@ app.post('/api/donate/:issue_id', (req, res) => {
 });
 
 app.put('/api/issues/:issue_id', (req, res) => {
-    network.updateAnIssue(req.params.issue_id, req.body.description, req.body.requested_amount, req.body.problem_faced, req.body.solution_proposed )
+    network.updateAnIssue(req.params.issue_id, req.body.farmer_name, req.body.description, req.body.requested_amount, req.body.problem_faced, req.body.solution_proposed )
         .then((response) => {
             res.send(response);
         });
@@ -62,7 +63,7 @@ app.put('/api/issues/:issue_id', (req, res) => {
 
 app.post('/api/close/:issue_id', (req, res) => {
     console.log(req.params.issue_id);
-    network.closeAnIssue(req.params.issue_id)
+    network.closeAnIssue(req.params.issue_id, req.body.farmer_name)
         .then((response) => {
             res.send(response);
         });
@@ -82,6 +83,12 @@ app.get('/api/farmers/:farmer_name', (req, res) => {
             res.send(list.filter(n => n));
             
         });
+});
+
+app.post('/api/register', (req, res) => {
+    registerUser.register(req.body.user).then((response) => {
+        res.send(response);
+    });
 });
 
 app.listen(process.env.PORT || 8081);

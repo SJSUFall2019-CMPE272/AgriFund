@@ -24,6 +24,8 @@ exports.createFarmerIssue = async function(key, farmer_name, issue, issue_create
      requested_amount, raised_amount, problem_faced, solution_proposed) {
     let response = {};
     try {
+        //setting up userName as farmer_name
+        let userName = farmer_name;
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), '/wallet');
@@ -72,6 +74,9 @@ exports.createFarmerIssue = async function(key, farmer_name, issue, issue_create
 exports.addDonationToAnIssue = async function(key, donator_name, donated_amount, donated_date) {
     let response = {};
     try {
+
+        // Setting userName as donor_name
+        let userName = donator_name;
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), '/wallet');
@@ -208,9 +213,11 @@ exports.querySingleFarmerIssue = async function(key) {
 };
 
 // edit an existing issue 
-exports.updateAnIssue = async function(key, description, requested_amount, problem_faced, solution_proposed) {
+exports.updateAnIssue = async function(key, farmer_name, description, requested_amount, problem_faced, solution_proposed) {
     let response = {};
     try {
+        // Setting userName to farmer_name
+        let userName = farmer_name;
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), '/wallet');
@@ -255,9 +262,11 @@ exports.updateAnIssue = async function(key, description, requested_amount, probl
 };
 
 //close an existing issue
-exports.closeAnIssue = async function(key) {
+exports.closeAnIssue = async function(key, farmer_name) {
     let response = {};
     try {
+        // Setting userName to farmer_name
+        let userName = farmer_name;
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), '/wallet');
