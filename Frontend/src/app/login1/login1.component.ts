@@ -42,7 +42,7 @@ login(){
   sessionStorage.setItem('userType','farmer')
   sessionStorage.setItem('loggedIn','true')
   sessionStorage.setItem('flag','true')
-  //location.reload()
+  location.reload()
   //this.mainService.login(this.name,this.password)
   this.router.navigate(['./dashboard'])
 }

@@ -25,9 +25,9 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label class="control-label required">Description</label>
-					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" required class="form-control" [(ngModel)]="data.ratePlan"
+					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" required class="form-control" [(ngModel)]="description"
                         placeholder="Enter Value" />
-					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter value</span>
+					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter here</span>
 				</div>
 			</div>
 		</div>
@@ -67,7 +67,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label class="control-label required">Description</label>
-											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
+											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="problemsFaced"
                         placeholder="Enter Here" />
 											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter Details</span>
 										</div>
@@ -91,7 +91,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label class="control-label required">Category</label>
-											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
+											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="solutionProposed"
                         placeholder="Enter Here" />
 											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter value</span>
 										</div>
@@ -108,7 +108,7 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label class="control-label required">Amount Required($)</label>
-					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
+					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="amtReq"
                         placeholder="Enter Here" />
 					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Enter here</span>
 				</div>

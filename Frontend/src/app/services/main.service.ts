@@ -18,14 +18,17 @@ export class MainService {
   }
   requestObject={}
   myDate = new Date();
-  createIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,otherInfo:any){
+
+
+
+  createIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,amountRequired:any){
     this.requestObject={
       "issueName":issueName,
       "category":category,
       "description":description,
       "problemsFaced":problemsFaced,
       "solutionProposed":solutionProposed,
-      "otherInfo":otherInfo
+      "otherInfo":amountRequired
     }
     this.toastr.success()
     let header = new HttpHeaders();
@@ -76,14 +79,13 @@ export class MainService {
         });
   }
   
-  editSpecificIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,otherInfo:any){
+  editSpecificIssue(selectedIssue:any,description:any,problemsFaced:any,solutionProposed:any,amtReq:any){
     this.requestObject={
-      "issueName":issueName,
-      "category":category,
+      "issueName":selectedIssue,
       "description":description,
       "problemsFaced":problemsFaced,
       "solutionProposed":solutionProposed,
-      "otherInfo":otherInfo
+      "amountRequested":amtReq
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
@@ -101,7 +103,7 @@ export class MainService {
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.post("https://i18253eej8.execute-api.us-east-1.amazonaws.com/prod/login"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
+     this.http.post("endpoint"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
             sessionStorage.setItem('userType',res['userType'])
   sessionStorage.setItem('loggedIn','true')

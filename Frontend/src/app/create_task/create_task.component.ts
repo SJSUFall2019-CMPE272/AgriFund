@@ -30,5 +30,9 @@ export class Create_taskComponent implements OnInit {
   onSelectAll(items: any) {
     console.log(items);
   }
+  createIssue()
+  {
+    
+  }
 
 }
