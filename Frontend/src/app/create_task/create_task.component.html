@@ -21,8 +21,6 @@
                          <option value="Agriculture"> Agriculture </option>
                          <option value="Donation"> Donation </option>
                     </select>
-					<!-- <input  type="text" id="AddonName" #i="ngModel" disabled name="id" required class="form-control" [(ngModel)]="data.id"
-                        placeholder="Enter Value" /> -->
 					<span class="help-block" *ngIf="!ca.valid && ca.touched"> Please Enter value</span>
 
 				</div>
@@ -32,7 +30,7 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label class="control-label required">Description</label>
-					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" required class="form-control" [(ngModel)]="data.ratePlan"
+					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" required class="form-control" [(ngModel)]="description"
                         placeholder="Enter Value" />
 					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter value</span>
 				</div>
@@ -74,9 +72,9 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label class="control-label required">Description</label>
-											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
-                        placeholder="Enter Value" />
+											<label class="control-label required">problemsFaced</label>
+											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="problemsFaced"
+                        placeholder="Enter Value"/>
 											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter Details</span>
 										</div>
 									</div>
@@ -99,7 +97,7 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label class="control-label required">Category</label>
-											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
+											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="solutionProposed"
                         placeholder="Enter Value" />
 											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter value</span>
 										</div>
@@ -116,7 +114,7 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label class="control-label required">Amount Required($)</label>
-					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="data.ratePlan"
+					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="amtReq"
                         placeholder="Enter Value" />
 					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Enter here</span>
 				</div>
@@ -127,5 +125,5 @@
 </div>
 <div mat-dialog-actions>
 	<button mat-button (click)="onNoClick()">No Thanks</button>
-	<button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Create</button>
+	<button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial (click)=createIssue()>Create</button>
 </div>

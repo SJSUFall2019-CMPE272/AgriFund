@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,6 @@ export class MainService {
 
   }
   requestObject={}
-  myDate = new Date();
 
 
 

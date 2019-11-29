@@ -161,8 +161,7 @@ export class MytaskComponent implements OnInit {
     this.userType=sessionStorage.getItem('userType')
     this.username=sessionStorage.getItem('name')
     this.getAllIssues()
-  //this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
-  //console.log(this.specificIssueResponceForUser+"%%%%%%%%%%%%")
+  
   this.getAllIssueForUser()
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
@@ -173,34 +172,17 @@ export class MytaskComponent implements OnInit {
 
   
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
 
   ngAfterViewInit() {
   }
 
-
-  // specificIssueName:any
-  // specifcIssueAttachment:any
-  // specificIssueRaisedBY:any
-  // specificIssueInfo:any
-  // specificIssueProblemFaced:any
-  // specificIssueSolutionProposed:any
-  // specifcIssueOtherInformation:any
-
   specificIssueForSpecificUserResponse:any
 
 setValues(){
-  // this.specificIssueName="Crops";
-  // this.specificIssueDetails="Need money for crops";
-  // this.specifcIssueAttachment="Issue attachments";
-  // this.specificIssueRaisedBY="Farmer1";
-  // this.specificIssueInfo="Farmer contact email";
-  // this.specificIssueProblemFaced="not able to plant crops";
-  // this.specificIssueSolutionProposed="need money to buy crops";
-  // this.specifcIssueOtherInformation="other info"
 
   this.specificIssueForSpecificUserResponse=[
     {
@@ -231,7 +213,6 @@ setValues(){
         }
     }
 ]
-//console.log(this.specificIssueForSpecificUserResponse)
 }
 
   
