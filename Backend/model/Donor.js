@@ -3,11 +3,11 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-mongoose.connect(
-    process.env.DB_CONNECT_DONOR,
-    { useNewUrlParser: true },
-    () => console.log('Connected to the database!')
-);
+// mongoose.connect(
+//     process.env.DB_CONNECT_DONOR,
+//     { useNewUrlParser: true },
+//     () => console.log('Connected to the database!')
+// );
 
 const donorSchema = new mongoose.Schema({
     issueId: {
@@ -27,6 +27,7 @@ const donorSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     }
-});
+},
+{ collection: 'donors'});
 
 module.exports = mongoose.model('Donor', donorSchema);
