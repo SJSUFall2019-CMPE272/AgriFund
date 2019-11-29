@@ -10,10 +10,10 @@ issueRouter.post('/issues', async (req,res) => {
     const issue = new Issue({
         issueName: req.body.issueName,
         description: req.body.description,
-        farmer_name: req.body.farmer_name,
+        farmerName: req.body.farmerName,
         issue_created_date: req.body.issue_created_date,
-        requested_amount: req.body.requested_amount,
-        raised_amount: req.body.raised_amount
+        requestedAmount: req.body.requestedAmount,
+        raisedAmount: req.body.raisedAmount
     });
     try{
         const savedIssue = await issue.save();
@@ -26,15 +26,6 @@ issueRouter.post('/issues', async (req,res) => {
 issueRouter.get('/issues', async (req, res) => {
     try {
         const issues = await Issue.find();
-        await res.json(issues);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-issueRouter.get('/{farmer_name}', async (req, res) => {
-    try {
-        const issues = await Issue.findOne();
         await res.json(issues);
     } catch (err) {
         res.status(500).json({ message: err.message });

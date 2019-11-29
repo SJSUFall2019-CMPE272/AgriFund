@@ -1,0 +1,9 @@
+---
+applications:
+- name: chain-agrifund
+  memory: 256M
+  instances: 1
+  host: chain-agrifund
+  command: ./start.sh
+  buildpack: sdk-for-nodejs
+  path: .
