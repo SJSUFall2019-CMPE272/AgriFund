@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +14,23 @@ import { Router } from '@angular/router';
 
 export class MainService {
   constructor(public toastr: ToastrService, private http : HttpClient, private router: Router) {
+
   }
   requestObject={}
-  createIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,otherInfo:any){
+  myDate = new Date();
+
+
+
+  createIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,amountRequired:any){
     this.requestObject={
       "issueName":issueName,
       "category":category,
       "description":description,
       "problemsFaced":problemsFaced,
       "solutionProposed":solutionProposed,
-      "otherInfo":otherInfo
+      "otherInfo":amountRequired
     }
+    this.toastr.success()
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
      this.http.post("endpoint",this.requestObject,{headers: header}).subscribe((res) => {
@@ -32,20 +39,20 @@ export class MainService {
             console.log(res);
         });
   }
-  getAllIssueForUser(userId:AnalyserOptions):any{
+  getAllIssueForUser(username:any):any{
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.get("endpoint"+'/{'+userId+'}',{headers: header}).subscribe((res) => {
+     this.http.get("endpoint"+'/{'+username+'}',{headers: header}).subscribe((res) => {
             //tostr message
             console.log(res);
             return res
         });
         
   }
-  getIssueForSpecificUser(userId:any,issueId:any):any{
+  getSpecificIssueForSpecificUser(username:any,issueId:any):any{
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.get("endpoint"+'/{'+userId+'}'+'/{'+issueId+'}',{headers: header}).subscribe((res) => {
+     this.http.get("endpoint"+'/{'+username+'}'+'/{'+issueId+'}',{headers: header}).subscribe((res) => {
             //tostr message
             console.log(res);
             return res
@@ -72,14 +79,13 @@ export class MainService {
         });
   }
   
-  editSpecificIssue(issueName:any,category:any,description:any,problemsFaced:any,solutionProposed:any,otherInfo:any){
+  editSpecificIssue(selectedIssue:any,description:any,problemsFaced:any,solutionProposed:any,amtReq:any){
     this.requestObject={
-      "issueName":issueName,
-      "category":category,
+      "issueName":selectedIssue,
       "description":description,
       "problemsFaced":problemsFaced,
       "solutionProposed":solutionProposed,
-      "otherInfo":otherInfo
+      "amountRequested":amtReq
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
@@ -99,12 +105,16 @@ export class MainService {
     header.append('Content-Type', 'application/json');
      this.http.post("endpoint"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
+            sessionStorage.setItem('userType',res['userType'])
+  sessionStorage.setItem('loggedIn','true')
+  sessionStorage.setItem('flag','true')
             sessionStorage.setItem('name',username)
   sessionStorage.setItem('userType',res['userType'])
             console.log(res);
             this.router.navigate(['./dashboard'])
             return res
         });
+        this.toastr.success("Welcome")
   }
   signup(username:any,password:any,email:any){
 
@@ -121,6 +131,33 @@ export class MainService {
   sessionStorage.setItem('userType',res['userType'])
             console.log(res);
             this.router.navigate(['./dashboard'])
+            return res
+        });
+  }
+
+
+  donate(username: any,donateAmount: any,issueId: any){
+    this.requestObject={
+      "username":username,
+      "donatedAmount":donateAmount,
+      "issueId":issueId,
+    }
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.post("endpoint"+'/Donate',this.requestObject,{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+            return res
+        });
+
+  }
+
+  getDonors(id: string){
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.get("endpoint"+'/:'+id,{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
             return res
         });
   }

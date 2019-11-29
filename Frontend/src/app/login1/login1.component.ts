@@ -39,16 +39,16 @@ userForms.classList.add('bounceRight')
   }
   userType="farmer"
 login(){
-  sessionStorage.setItem('userType','donor')
+  sessionStorage.setItem('userType','farmer')
   sessionStorage.setItem('loggedIn','true')
   sessionStorage.setItem('flag','true')
   location.reload()
   //this.mainService.login(this.name,this.password)
-  //this.router.navigate(['./dashboard'])
+  this.router.navigate(['./dashboard'])
 }
 signup(){
   sessionStorage.setItem('loggedIn','true')
-  //this.mainService.signup(this.name,this.password,this.email,)
+  //this.mainService.signup(this.name,this.password,this.email)
   this.router.navigate(['./dashboard'])
 }
 }
