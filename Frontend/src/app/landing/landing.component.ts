@@ -12,12 +12,16 @@ export class LandingComponent implements OnInit {
   constructor(private http : HttpClient, private router: Router) { }
 
   flag=1
+  d = new Date();
+  dateString:any
   ngOnInit() {
     if(sessionStorage.getItem('loggedIn')==='true')
     {
     sessionStorage.setItem('loggedIn','false')
     location.reload()
     }
+   this.dateString = this.d.getDate()  + "-" + (this.d.getMonth()+1) + "-" + this.d.getFullYear() + " " +
+this.d.getHours() + ":" + this.d.getMinutes();
     
   }
 

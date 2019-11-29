@@ -177,7 +177,26 @@ font-size: 14px; top: -4px;"></i>
 					<div class="col-md-12">
 						<mat-card class="example-card">
 							<mat-card-header>
-								<mat-card-title class="blue fs-16">Other Information</mat-card-title>
+								<mat-card-title class="blue fs-16">Money Raised/Money Requested</mat-card-title>
+							</mat-card-header>
+							<mat-card-content>
+								
+
+<p>{{specificIssueForSpecificUserResponse[0].issueOtherInformation}}</p>
+
+
+								
+							</mat-card-content>
+						</mat-card>
+						
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<div class="col-md-12">
+						<mat-card class="example-card">
+							<mat-card-header>
+								<mat-card-title class="blue fs-16">List of Donors</mat-card-title>
 							</mat-card-header>
 							<mat-card-content>
 								
@@ -197,6 +216,14 @@ font-size: 14px; top: -4px;"></i>
 		</div>
 	</div>
 </mat-sidenav>
+
+
+
+
+
+
+
+
 <mat-tab-group>
 	<mat-tab label="My Issues">
 		<div class="row">
@@ -225,7 +252,7 @@ font-size: 14px; top: -4px;"></i>
 			</div>
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="search"
+					<input type="text" (keyup)="applyFilter($event.target.value)" class="form-control" placeholder="search"
 						aria-label="Text input with dropdown button">
 					<div class="input-group-btn">
 						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
@@ -317,7 +344,7 @@ font-size: 14px; top: -4px;"></i>
 			</tr>
 		</table>
 
-		<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+		<mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
 	</mat-tab>
 
@@ -333,7 +360,7 @@ font-size: 14px; top: -4px;"></i>
 			</div>
 			<div class="col-sm-2">
 				<div class="input-group">
-					<input type="text" class="form-control" placeholder="search"
+						<input type="text" (keyup)="applyFilter($event.target.value)" class="form-control" placeholder="search"
 						aria-label="Text input with dropdown button">
 					<div class="input-group-btn">
 						<button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
@@ -509,7 +536,7 @@ font-size: 14px; top: -4px;"></i>
 
 
 <body *ngIf="userType==='farmer'">
-<mat-sidenav position="end" #sidenav [mode]="over"
+	<mat-sidenav position="end" #sidenav [mode]="over"
 	[ngClass]="{'customWidth1' : conditionFlag, 'customWidth2' : !conditionFlag }">
 	<div class="row">
 		<div [ngClass]="{'col-md-12' : conditionFlag, 'col-md-5' : !conditionFlag }">
@@ -556,7 +583,9 @@ font-size: 14px; top: -4px;"></i>
 						</mat-card-header>
 						<mat-card-content>
 							
-
+<p>
+	{{specificIssueForSpecificUserResponse[0].issueName}}
+</p>
 
 
 
@@ -571,8 +600,9 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-title class="blue fs-16">Details</mat-card-title>
 						</mat-card-header>
 						<mat-card-content>
-							
-
+						<p>
+							{{specificIssueForSpecificUserResponse[0].issueDetails}}
+						</p>
 
 
 
@@ -589,7 +619,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-title class="blue fs-16">Attachment</mat-card-title>
 						</mat-card-header>
 						<mat-card-content>
-							
+							<p>{{specificIssueForSpecificUserResponse[0].issueAttachments}}</p>
 
 
 
@@ -614,7 +644,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-
+<p>{{specificIssueForSpecificUserResponse[0].issueRaisedBy}}</p>
 
 
 
@@ -631,7 +661,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 						
 
-
+<p>{{specificIssueForSpecificUserResponse[0].issueInfo}}</p>
 
 
 
@@ -652,7 +682,7 @@ font-size: 14px; top: -4px;"></i>
 
 
 
-
+<p>{{specificIssueForSpecificUserResponse[0].issueProblemFaced}}</p>
 
 
 							</mat-card-content>
@@ -671,7 +701,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-
+<p>{{specificIssueForSpecificUserResponse[0].issueSolutionProposed}}</p>
 
 
 							</mat-card-content>
@@ -684,12 +714,31 @@ font-size: 14px; top: -4px;"></i>
 					<div class="col-md-12">
 						<mat-card class="example-card">
 							<mat-card-header>
-								<mat-card-title class="blue fs-16">Other Information</mat-card-title>
+								<mat-card-title class="blue fs-16">Money Raised/Money Requested</mat-card-title>
 							</mat-card-header>
 							<mat-card-content>
 								
 
+<p>{{specificIssueForSpecificUserResponse[0].issueOtherInformation}}</p>
 
+
+								
+							</mat-card-content>
+						</mat-card>
+						
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<div class="col-md-12">
+						<mat-card class="example-card">
+							<mat-card-header>
+								<mat-card-title class="blue fs-16">List of Donors</mat-card-title>
+							</mat-card-header>
+							<mat-card-content>
+								
+
+<p>{{specificIssueForSpecificUserResponse[0].issueOtherInformation}}</p>
 
 
 								
@@ -704,6 +753,20 @@ font-size: 14px; top: -4px;"></i>
 		</div>
 	</div>
 </mat-sidenav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <mat-tab-group>
 	<mat-tab label="My Donations">
 		<div class="row">

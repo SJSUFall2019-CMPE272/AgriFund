@@ -68,6 +68,13 @@ export class MytaskComponent implements OnInit {
  animal: string;
   name: string;
  test="test"
+
+
+
+
+
+
+
   specificIssueResponceForUser:any=[
     { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
     { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
@@ -104,8 +111,10 @@ export class MytaskComponent implements OnInit {
   mode = new FormControl('over');
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'status', 'Actions'];
   displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
+  datasource1=this.specificIssueResponceForUser
   dataSource = new MatTableDataSource<any>(this.specificIssueResponceForUser);
   dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+  
   selection = new SelectionModel<any>(true, []);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -165,7 +174,6 @@ export class MytaskComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  specificIssueResponce:any
   constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal) { }
   
   username:any
@@ -176,14 +184,25 @@ export class MytaskComponent implements OnInit {
 this.username=sessionStorage.getItem('name')
 this.allIssueResponce=this._Mainservice.getAllIssues()
     
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    //this.dataSource2.paginator=this.paginator
-    //this.dataSource2.sort=this.sort
+     this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+    this.dataSource2.paginator=this.paginator
+    this.dataSource2.sort=this.sort
     this.setValues()
-    
-
   }
+
+  
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+  ngAfterViewInit() {
+    this.totalStepsCount = this.myStepper._steps.length;
+  }
+
+
   specificIssueName:any
   specifcIssueAttachment:any
   specificIssueRaisedBY:any
@@ -269,4 +288,14 @@ console.log(this.specificIssueForSpecificUserResponse)
 console.log(issueID)
   }
 
+  getAllIssues(){
+this.allIssueResponce=this._Mainservice.getAllIssues()
+  }
+  getAllIssuesForAUser(){
+this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
+  }
+
+  getSpecificIssueforSpecificUser(){
+    this.specificIssueForSpecificUserResponse
+  }
 }
