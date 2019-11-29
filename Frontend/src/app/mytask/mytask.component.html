@@ -5,7 +5,7 @@
 		<div [ngClass]="{'col-md-12' : conditionFlag, 'col-md-5' : !conditionFlag }">
 			<div class="row">
 				<div class="col-md-4">
-					<h3 class="d-inline blue">Issue 1</h3>
+					<h3 class="d-inline blue">{{specificIssueForSpecificUserResponse[0].key}}</h3>
 					<br>
 				</div>
 				
@@ -47,7 +47,7 @@ font-size: 14px; top: -4px;"></i>
 						<mat-card-content>
 							
 <p>
-	{{specificIssueForSpecificUserResponse[0].issueName}}
+	{{specificIssueForSpecificUserResponse[0].Record.issue}}
 </p>
 
 
@@ -64,7 +64,7 @@ font-size: 14px; top: -4px;"></i>
 						</mat-card-header>
 						<mat-card-content>
 						<p>
-							{{specificIssueForSpecificUserResponse[0].issueDetails}}
+							{{specificIssueForSpecificUserResponse[0].Record.description}}
 						</p>
 
 
@@ -79,10 +79,10 @@ font-size: 14px; top: -4px;"></i>
 				<div class="col-md-12 mt-3">
 					<mat-card class="example-card">
 						<mat-card-header>
-							<mat-card-title class="blue fs-16">Attachment</mat-card-title>
+							<mat-card-title class="blue fs-16">status</mat-card-title>
 						</mat-card-header>
 						<mat-card-content>
-							<p>{{specificIssueForSpecificUserResponse[0].issueAttachments}}</p>
+							<p>{{specificIssueForSpecificUserResponse[0].Record.status}}</p>
 
 
 
@@ -107,7 +107,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-<p>{{specificIssueForSpecificUserResponse[0].issueRaisedBy}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].Record.farmer_name}}</p>
 
 
 
@@ -119,12 +119,12 @@ font-size: 14px; top: -4px;"></i>
 					<div class="col-md-6">
 						<mat-card class="example-card">
 							<mat-card-header>
-								<mat-card-title class="blue fs-16">Info</mat-card-title>
+								<mat-card-title class="blue fs-16">Category</mat-card-title>
 							</mat-card-header>
 							<mat-card-content>
 						
 
-<p>{{specificIssueForSpecificUserResponse[0].issueInfo}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].Record.docType}}</p>
 
 
 
@@ -145,7 +145,7 @@ font-size: 14px; top: -4px;"></i>
 
 
 
-<p>{{specificIssueForSpecificUserResponse[0].issueProblemFaced}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].Record.problem_faced}}</p>
 
 
 							</mat-card-content>
@@ -164,7 +164,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-<p>{{specificIssueForSpecificUserResponse[0].issueSolutionProposed}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].Record.solution_proposed}}</p>
 
 
 							</mat-card-content>
@@ -182,7 +182,7 @@ font-size: 14px; top: -4px;"></i>
 							<mat-card-content>
 								
 
-<p>{{specificIssueForSpecificUserResponse[0].issueOtherInformation}}</p>
+<p>{{specificIssueForSpecificUserResponse[0].Record.raised_amount}}$/{{specificIssueForSpecificUserResponse[0].Record.requested_amount}}$</p>
 
 
 								
@@ -199,12 +199,14 @@ font-size: 14px; top: -4px;"></i>
 								<mat-card-title class="blue fs-16">List of Donors</mat-card-title>
 							</mat-card-header>
 							<mat-card-content>
-								
+								<div *ngFor = "let donor of specificIssueForSpecificUserResponse[0].Record.donators" class="col-md-6 mb-4" >
+										<h3>{{donor.donator_name}}</h3>
 
-<p>{{specificIssueForSpecificUserResponse[0].issueOtherInformation}}</p>
-
-
-								
+										<ul>
+										  <li>Donated Amount:{{donor.donated_amount}}</li>
+										  <li>Donated Date - > {{donor.donated_date}}</li>
+										</ul>
+								</div>
 							</mat-card-content>
 						</mat-card>
 						
@@ -290,7 +292,7 @@ font-size: 14px; top: -4px;"></i>
 			
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element" (click)="getissue(element.position, sidenav)"> {{element.Key}} </td>
+				<td mat-cell *matCellDef="let element" (click)="getissue(element.Key, sidenav)"> {{element.Key}} </td>
 			</ng-container>
 
 			
@@ -391,7 +393,7 @@ font-size: 14px; top: -4px;"></i>
 
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle()"> {{element.Key}} </td>
+				<td mat-cell *matCellDef="let element" (click)="getissue(element.Key, sidenav)"> {{element.Key}} </td>
 			</ng-container>
 
 			<ng-container matColumnDef="name">
@@ -618,8 +620,6 @@ font-size: 14px; top: -4px;"></i>
 						</mat-card-header>
 						<mat-card-content>
 							<p>{{specificIssueForSpecificUserResponse[0].issueAttachments}}</p>
-
-
 
 
 

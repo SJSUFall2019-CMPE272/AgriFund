@@ -110,7 +110,7 @@ export class MytaskComponent implements OnInit {
 
 
   activeDayIsOpen: boolean = true;
-  specificIssueDetails: any;
+  //specificIssueDetails: any;
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -163,7 +163,7 @@ export class MytaskComponent implements OnInit {
     this.getAllIssues()
   //this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
   //console.log(this.specificIssueResponceForUser+"%%%%%%%%%%%%")
-
+  this.getAllIssueForUser()
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator=this.paginator
@@ -182,39 +182,55 @@ export class MytaskComponent implements OnInit {
   }
 
 
-  specificIssueName:any
-  specifcIssueAttachment:any
-  specificIssueRaisedBY:any
-  specificIssueInfo:any
-  specificIssueProblemFaced:any
-  specificIssueSolutionProposed:any
-  specifcIssueOtherInformation:any
+  // specificIssueName:any
+  // specifcIssueAttachment:any
+  // specificIssueRaisedBY:any
+  // specificIssueInfo:any
+  // specificIssueProblemFaced:any
+  // specificIssueSolutionProposed:any
+  // specifcIssueOtherInformation:any
 
   specificIssueForSpecificUserResponse:any
 
 setValues(){
-  this.specificIssueName="Crops";
-  this.specificIssueDetails="Need money for crops";
-  this.specifcIssueAttachment="Issue attachments";
-  this.specificIssueRaisedBY="Farmer1";
-  this.specificIssueInfo="Farmer contact email";
-  this.specificIssueProblemFaced="not able to plant crops";
-  this.specificIssueSolutionProposed="need money to buy crops";
-  this.specifcIssueOtherInformation="other info"
-
+  // this.specificIssueName="Crops";
+  // this.specificIssueDetails="Need money for crops";
+  // this.specifcIssueAttachment="Issue attachments";
+  // this.specificIssueRaisedBY="Farmer1";
+  // this.specificIssueInfo="Farmer contact email";
+  // this.specificIssueProblemFaced="not able to plant crops";
+  // this.specificIssueSolutionProposed="need money to buy crops";
+  // this.specifcIssueOtherInformation="other info"
 
   this.specificIssueForSpecificUserResponse=[
     {
-    "issueName" : this.specificIssueName,
-    "issueDetails":this.specificIssueDetails,
-    "issueAttachments":this.specifcIssueAttachment,
-    "issueRaisedBy":this.specificIssueRaisedBY,
-    "issueInfo":this.specificIssueInfo,
-    "issueProblemFaced":this.specificIssueProblemFaced,
-    "issueSolutionProposed":this.specificIssueSolutionProposed,
-    "issueOtherInformation":this.specifcIssueOtherInformation
-}
-  ]
+        "key": "ISSUE8",
+        "Record": {
+            "description": "need more money to buy more land",
+            "docType": "farmer_issue",
+            "donators": [
+                {
+                    "donated_amount": 300,
+                    "donated_date": "11-27-2019",
+                    "donator_name": "Doremon"
+                },
+                {
+                    "donated_amount": 300,
+                    "donated_date": "11-27-2019",
+                    "donator_name": "ramya"
+                }
+            ],
+            "farmer_name": "Kowshhal",
+            "issue": "buy more land",
+            "issue_created_date": "11-12-2019",
+            "problem_faced": "problem faced to be updated",
+            "raised_amount": 600,
+            "requested_amount": "40000",
+            "solution_proposed": "solution to be updated",
+            "status": "closed"
+        }
+    }
+]
 //console.log(this.specificIssueForSpecificUserResponse)
 }
 
@@ -259,9 +275,16 @@ setValues(){
 
   getissue(issueID:any, sidenav){
 
-    sidenav.toggle();
-
-    
+    //sessionStorage.setItem('issueId',issueID)
+      let header = new HttpHeaders();
+      header.append('Content-Type', 'application/json');
+       this.http.get("https://chain-agrifund.mybluemix.net/api/issues/"+issueID,{headers: header}).subscribe((res) => {
+              //tostr message
+              console.log(res);
+              this.specificIssueForSpecificUserResponse=res
+              sidenav.toggle();
+          });
+   
 
     //window.alert(issueID)
 //console.log(issueID)
@@ -269,7 +292,7 @@ setValues(){
 
 
   getAllIssuesForAUser(){
-this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
+this.specificIssueResponceForUser
   }
 
   getSpecificIssueforSpecificUser(){
@@ -290,6 +313,20 @@ this.allIssueResponce=<any>res
             this.dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
         });
 
+        
+  }
+
+
+  getAllIssueForUser(){
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.get("https://chain-agrifund.mybluemix.net/api/farmers"+'/'+this.username,{headers: header}).subscribe((res) => {
+            //tostr message
+            this.specificIssueResponceForUser=<any>res
+            this.dataSource=new MatTableDataSource<any>(this.specificIssueResponceForUser)
+            console.log(res);
+            return res
+        });
         
   }
 }

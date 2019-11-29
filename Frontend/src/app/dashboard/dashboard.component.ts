@@ -38,6 +38,6 @@ getAllIssuesForSpecificUsersResponce:any
     //this.issuesforSPecificUser=this._Mainservice.getAllIssueForUser(this.username)
   }
   getMyissues(){
-    this.issuesforSPecificUser=this._Mainservice.getAllIssueForUser(this.username)
+    //this.issuesforSPecificUser=this._Mainservice.getAllIssueForUser(this.username)
   }
 }

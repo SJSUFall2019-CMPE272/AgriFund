@@ -39,16 +39,7 @@ export class MainService {
             console.log(res);
         });
   }
-  getAllIssueForUser(username:any):any{
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-     this.http.get("https://chain-agrifund.mybluemix.net/api/farmers"+'/'+username,{headers: header}).subscribe((res) => {
-            //tostr message
-            console.log(res);
-            return res
-        });
-        
-  }
+ 
   getSpecificIssueForSpecificUser(username:any,issueId:any):any{
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
