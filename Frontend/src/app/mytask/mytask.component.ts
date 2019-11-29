@@ -17,6 +17,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatStepper } from '@angular/material';
 import { DonateComponent } from '../donate/donate.component';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 const colors: any = {
   red: {
@@ -76,10 +77,10 @@ export class MytaskComponent implements OnInit {
 
 
   specificIssueResponceForUser:any=[
-    { key: 'issue1', record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} }
+    { Key: 'issue1', Record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} }
   ]
   allIssueResponce=[
-    { key: 'issue1', record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} },
+    { Key: 'issue1', Record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} },
   ]
   private ngVersion: string = VERSION.full;
     // Only required when not passing the id in methods
@@ -153,16 +154,16 @@ export class MytaskComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal) { }
+  constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient) { }
   
   username:any
-  ngOnInit() {
+  async ngOnInit() {
     this.userType=sessionStorage.getItem('userType')
     this.username=sessionStorage.getItem('name')
-  this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
-//this.dataSource=new MatTableDataSource<any>(this.specificIssueResponceForUser)
-this.allIssueResponce=this._Mainservice.getAllIssues()
-//this.dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+    this.getAllIssues()
+  //this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
+  //console.log(this.specificIssueResponceForUser+"%%%%%%%%%%%%")
+
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator=this.paginator
@@ -266,14 +267,29 @@ setValues(){
 //console.log(issueID)
   }
 
-  getAllIssues(){
-this.allIssueResponce=this._Mainservice.getAllIssues()
-  }
+
   getAllIssuesForAUser(){
 this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
   }
 
   getSpecificIssueforSpecificUser(){
     this.specificIssueForSpecificUserResponse
+  }
+
+
+
+
+
+  getAllIssues():any{
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.get("https://chain-agrifund.mybluemix.net/api/issues",{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+this.allIssueResponce=<any>res
+            this.dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+        });
+
+        
   }
 }

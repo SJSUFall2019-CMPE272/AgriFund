@@ -58,16 +58,7 @@ export class MainService {
             return res
         });
   }
-  getAllIssues():any{
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-     this.http.get("https://chain-agrifund.mybluemix.net/api/issues",{headers: header}).subscribe((res) => {
-            //tostr message
-            console.log(res);
-            return res
-        });
-        
-  }
+ 
 
   deleteSpecificIssue(){
     let header = new HttpHeaders();

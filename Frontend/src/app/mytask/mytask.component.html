@@ -290,19 +290,19 @@ font-size: 14px; top: -4px;"></i>
 			
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element" (click)="getissue(element.position, sidenav)"> {{element.position}} </td>
+				<td mat-cell *matCellDef="let element" (click)="getissue(element.position, sidenav)"> {{element.Key}} </td>
 			</ng-container>
 
 			
 			<ng-container matColumnDef="name">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Name </th>
-				<td mat-cell *matCellDef="let element" > {{element.name}} </td>
+				<td mat-cell *matCellDef="let element" > {{element.Record.issue}} </td>
 			</ng-container>
 
 		
 			<ng-container matColumnDef="Due">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-				<td mat-cell *matCellDef="let element"> {{element.Due}} </td>
+				<td mat-cell *matCellDef="let element"> {{element.Record.issue_created_date}} </td>
 			</ng-container>
 
 	
@@ -310,10 +310,12 @@ font-size: 14px; top: -4px;"></i>
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
 				<td mat-cell *matCellDef="let element">
 
-					<button mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#05C700'}" (click)="ondelete(row.productID)" type="button">
-					  {{element.status}}
+					<button *ngIf="element.Record.status===undefined" mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.Record.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#F90000'}" (click)="ondelete(row.productID)" type="button">
+						closed
 					</button>
-
+					<button *ngIf="element.Record.status!==undefined" mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.Record.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#05C700'}" (click)="ondelete(row.productID)" type="button">
+						{{element.Record.status}}
+					</button>
 				</td>
 			</ng-container>
 
@@ -351,13 +353,6 @@ font-size: 14px; top: -4px;"></i>
 	<mat-tab label="All Issues">
 
 		<div class="row">
-			<div class="col-sm-10">
-				<button type="button" class="btn btn-link"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-				<button type="button" class="btn btn-link"><i class="fa fa-share-square-o"
-						aria-hidden="true"></i></button>
-				<button type="button" class="btn btn-link"><i class="fa fa-user-o" aria-hidden="true"></i></button>
-				<button type="button" class="btn btn-link"><i class="fa fa-plane" aria-hidden="true"></i></button>
-			</div>
 			<div class="col-sm-2">
 				<div class="input-group">
 						<input type="text" (keyup)="applyFilter($event.target.value)" class="form-control" placeholder="search"
@@ -396,24 +391,27 @@ font-size: 14px; top: -4px;"></i>
 
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle()"> {{element.position}} </td>
+				<td mat-cell *matCellDef="let element" (click)="sidenav.toggle()"> {{element.Key}} </td>
 			</ng-container>
 
 			<ng-container matColumnDef="name">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Name </th>
-				<td mat-cell *matCellDef="let element" > {{element.name}} </td>
+				<td mat-cell *matCellDef="let element" > {{element.Record.issue}} </td>
 			</ng-container>
 			<ng-container matColumnDef="Due">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-				<td mat-cell *matCellDef="let element"> {{element.Due}} </td>
+				<td mat-cell *matCellDef="let element"> {{element.Record.issue_created_date}} </td>
 			</ng-container>
 
 			<ng-container matColumnDef="status">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
 				<td mat-cell *matCellDef="let element">
 
-					<button mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#05C700'}" (click)="ondelete(row.productID)" type="button">
-					  {{element.status}}
+					<button *ngIf="element.Record.status===undefined" mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.Record.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#F90000'}" (click)="ondelete(row.productID)" type="button">
+						closed
+					</button>
+					<button *ngIf="element.Record.status!==undefined" mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.Record.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#05C700'}" (click)="ondelete(row.productID)" type="button">
+						{{element.Record.status}}
 					</button>
 
 				</td>
