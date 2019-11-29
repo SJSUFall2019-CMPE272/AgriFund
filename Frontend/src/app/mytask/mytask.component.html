@@ -1,4 +1,4 @@
-<body *ngIf="userType==='donor'"> 
+<body *ngIf="userType==='farmer'"> 
 	<mat-sidenav position="end" #sidenav [mode]="over"
 	[ngClass]="{'customWidth1' : conditionFlag, 'customWidth2' : !conditionFlag }">
 	<div class="row">
@@ -535,7 +535,7 @@ font-size: 14px; top: -4px;"></i>
 
 
 
-<body *ngIf="userType==='farmer'">
+<body *ngIf="userType==='donor'">
 	<mat-sidenav position="end" #sidenav [mode]="over"
 	[ngClass]="{'customWidth1' : conditionFlag, 'customWidth2' : !conditionFlag }">
 	<div class="row">

@@ -76,30 +76,10 @@ export class MytaskComponent implements OnInit {
 
 
   specificIssueResponceForUser:any=[
-    { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
-    { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
-    { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
-    { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
-    { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
-    { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
-    { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
-    { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
-    { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
-    { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
-    { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
+    { key: 'issue1', record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} }
   ]
   allIssueResponce=[
-  { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
-  { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
-  { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
-  { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
-  { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
-  { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
-  { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
-  { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
-  { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
-  { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
-  { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
+    { key: 'issue1', record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} },
   ]
   private ngVersion: string = VERSION.full;
     // Only required when not passing the id in methods
@@ -111,7 +91,6 @@ export class MytaskComponent implements OnInit {
   mode = new FormControl('over');
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'status', 'Actions'];
   displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
-  datasource1=this.specificIssueResponceForUser
   dataSource = new MatTableDataSource<any>(this.specificIssueResponceForUser);
   dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
   
@@ -179,11 +158,11 @@ export class MytaskComponent implements OnInit {
   username:any
   ngOnInit() {
     this.userType=sessionStorage.getItem('userType')
-    
+    this.username=sessionStorage.getItem('name')
   this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
-this.username=sessionStorage.getItem('name')
+//this.dataSource=new MatTableDataSource<any>(this.specificIssueResponceForUser)
 this.allIssueResponce=this._Mainservice.getAllIssues()
-    
+//this.dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator=this.paginator
@@ -199,7 +178,6 @@ this.allIssueResponce=this._Mainservice.getAllIssues()
   }
 
   ngAfterViewInit() {
-    this.totalStepsCount = this.myStepper._steps.length;
   }
 
 
@@ -236,7 +214,7 @@ setValues(){
     "issueOtherInformation":this.specifcIssueOtherInformation
 }
   ]
-console.log(this.specificIssueForSpecificUserResponse)
+//console.log(this.specificIssueForSpecificUserResponse)
 }
 
   
@@ -285,7 +263,7 @@ console.log(this.specificIssueForSpecificUserResponse)
     
 
     //window.alert(issueID)
-console.log(issueID)
+//console.log(issueID)
   }
 
   getAllIssues(){

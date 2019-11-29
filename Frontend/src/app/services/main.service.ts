@@ -42,7 +42,7 @@ export class MainService {
   getAllIssueForUser(username:any):any{
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.get("endpoint"+'/{'+username+'}',{headers: header}).subscribe((res) => {
+     this.http.get("https://chain-agrifund.mybluemix.net/api/farmers"+'/'+username,{headers: header}).subscribe((res) => {
             //tostr message
             console.log(res);
             return res
@@ -61,7 +61,7 @@ export class MainService {
   getAllIssues():any{
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.get("endpoint",{headers: header}).subscribe((res) => {
+     this.http.get("https://chain-agrifund.mybluemix.net/api/issues",{headers: header}).subscribe((res) => {
             //tostr message
             console.log(res);
             return res
@@ -98,39 +98,44 @@ export class MainService {
 
   login(username:any,password:any):any{
     this.requestObject={
-      "username":username,
+      "fullName":username,
       "password":password,
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.post("endpoint"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
+     this.http.post("https://backend-agrifund.mybluemix.net"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
             sessionStorage.setItem('userType',res['userType'])
   sessionStorage.setItem('loggedIn','true')
   sessionStorage.setItem('flag','true')
-            sessionStorage.setItem('name',username)
-  sessionStorage.setItem('userType',res['userType'])
+    sessionStorage.setItem('name',username)
+    this.router.navigate(['./dashboard'])
             console.log(res);
-            this.router.navigate(['./dashboard'])
-            return res
+            this.toastr.success("Welcome")
+            location.reload()
         });
-        this.toastr.success("Welcome")
+        
   }
-  signup(username:any,password:any,email:any){
+  signup(username:any,password:any,email:any,userType:any){
 
     this.requestObject={
-      "username":username,
+      "fullName":username,
       "email":email,
       "password":password,
+      "userType":userType
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.post("endpoint"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
+     this.http.post("https://backend-agrifund.mybluemix.net"+'/signup',this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
-            sessionStorage.setItem('name',username)
-  sessionStorage.setItem('userType',res['userType'])
-            console.log(res);
+            sessionStorage.setItem('loggedIn','true')
+            sessionStorage.setItem('flag','true')
+              sessionStorage.setItem('name',username)
+            sessionStorage.setItem('userType',res['userType'])
             this.router.navigate(['./dashboard'])
+            console.log(res);
+            this.toastr.success("Welcome")
+            location.reload()
             return res
         });
   }

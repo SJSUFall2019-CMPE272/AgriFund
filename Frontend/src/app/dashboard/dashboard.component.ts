@@ -30,14 +30,14 @@ export class DashboardComponent implements OnInit {
   username:any
   displayedColumns: string[] = ['Id', 'Task Name','Due At','Status'];
   dataSource = ELEMENT_DATA;
-
+ issuesforSPecificUser:any
   constructor(private _Mainservice: MainService) { }
 getAllIssuesForSpecificUsersResponce:any
   ngOnInit() {
-    this.username=sessionStorage.getItem('name')
-    this._Mainservice.getAllIssueForUser(this.username)
+    //this.username=sessionStorage.getItem('name')
+    //this.issuesforSPecificUser=this._Mainservice.getAllIssueForUser(this.username)
   }
   getMyissues(){
-    this._Mainservice.getAllIssueForUser(this.username)
+    this.issuesforSPecificUser=this._Mainservice.getAllIssueForUser(this.username)
   }
 }
