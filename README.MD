@@ -58,3 +58,6 @@ Donors :  People who are looking to donate for a cause, from individuals to huge
 
 
 ![To-Be_Donor flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/To-Be_Donor.jpeg)
+
+
+![To-Be_Farmer flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/To-Be_Farmer.jpeg)
