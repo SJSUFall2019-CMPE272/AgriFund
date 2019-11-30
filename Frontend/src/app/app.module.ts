@@ -52,6 +52,7 @@ import { EditIssueComponent } from './edit-issue/edit-issue.component';
 import { DonateComponent } from './donate/donate.component';
 import { ErrorComponent } from './error/error.component';
 import { MyDonationsComponent } from './my-donations/my-donations.component';
+import { DonorDashboardComponent } from './donor-dashboard/donor-dashboard.component';
 /* Widget Import Ends */
 
 @NgModule({
@@ -85,6 +86,7 @@ import { MyDonationsComponent } from './my-donations/my-donations.component';
     DonateComponent,
     ErrorComponent,
     MyDonationsComponent,
+    DonorDashboardComponent,
 
   ],
   entryComponents: [

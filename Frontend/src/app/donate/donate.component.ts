@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Create_taskComponent } from '../create_task/create_task.component';
 import { MainService } from '../services/main.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-donate',
@@ -11,26 +12,49 @@ import { MainService } from '../services/main.service';
   styleUrls: ['./donate.component.sass']
 })
 export class DonateComponent implements OnInit {
-  constructor( private router:Router,private  elemRef: ElementRef,public dialogRef: MatDialogRef<Create_taskComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private _Mainservice: MainService) {
+  requestObject: { "donated_amount": any; "donated_date": any; "donator_name": any; };
+  
+  constructor( private router:Router,private  elemRef: ElementRef,public dialogRef: MatDialogRef<Create_taskComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private http : HttpClient) {
   }
   username:any
   issueSelected:any
 donateAmount:any=0
+d = new Date();
+  dateString:any
 onNoClick(): void {
   this.dialogRef.close();
 }
   ngOnInit() {
-    this.username=sessionStorage.getItem('username')
+    this.username=sessionStorage.getItem('name')
     this.issueSelected=sessionStorage.getItem('issueSelected')
+    this.dateString = this.d.getDate()  + "-" + (this.d.getMonth()+1) + "-" + this.d.getFullYear()
   }
   
   setAmount(amt: any){
     this.donateAmount=amt;
   }
+  // donate(){
+  //   sessionStorage.setItem('donation',this.donateAmount)
+  //   this._Mainservice.donate(this.username,this.donateAmount,this.issueSelected)
+  //   this.router.navigate(['./dashboard'])
+  // }
+
+
+
   donate(){
-    sessionStorage.setItem('donation',this.donateAmount)
-    this._Mainservice.donate(this.username,this.donateAmount,this.issueSelected)
-    this.router.navigate(['./dashboard'])
+    this.requestObject={
+      "donated_amount":this.donateAmount,
+      "donated_date":this.donateAmount,
+      "donator_name":this.issueSelected,
+    }
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.post("https://chain-agrifund.mybluemix.net/api/donate/"+this.issueSelected,this.requestObject,{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+            return res
+        });
+
   }
   
 }

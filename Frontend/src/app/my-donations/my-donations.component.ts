@@ -1,5 +1,6 @@
 
 
+
 import { Component, OnInit, ElementRef, ViewChild, ChangeDetectionStrategy, TemplateRef, AfterViewInit, VERSION } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
@@ -268,20 +269,9 @@ sessionStorage.setItem('selectedIssue',selectedIssue)
               this.specificIssueForSpecificUserResponse=res
               sidenav.toggle();
           });
-   
 
-    //window.alert(issueID)
-//console.log(issueID)
   }
 
-
-  getAllIssuesForAUser(){
-this.specificIssueResponceForUser
-  }
-
-  getSpecificIssueforSpecificUser(){
-    this.specificIssueForSpecificUserResponse
-  }
 
 
 
