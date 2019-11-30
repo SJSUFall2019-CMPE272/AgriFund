@@ -23,15 +23,16 @@ export class EditIssueComponent implements OnInit {
     username:any
     ngOnInit() { 
       this.selectedIssue=sessionStorage.getItem('selectedIssue')
+      window.alert(this.selectedIssue)
       this.username=sessionStorage.getItem('name')
       let header = new HttpHeaders();
-      header.append('Content-Type', 'application/json');
-       this.http.get("https://chain-agrifund.mybluemix.net/api/issues/"+this.selectedIssue,{headers: header}).subscribe((res) => {
-              //tostr message
-              this.placeHolder=res
+      // header.append('Content-Type', 'application/json');
+      //  this.http.get("https://chain-agrifund.mybluemix.net/api/issues/"+this.selectedIssue,{headers: header}).subscribe((res) => {
+      //         //tostr message
+      //         this.placeHolder=res
 
-              console.log(res);
-          });
+      //         console.log(res);
+      //     });
     //get
     }
 

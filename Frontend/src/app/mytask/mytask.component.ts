@@ -182,7 +182,7 @@ export class MytaskComponent implements OnInit {
      this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator=this.paginator
     this.dataSource2.sort=this.sort
-    window.alert(this.paginator)
+    //window.alert(this.paginator)
   }
 
   specificIssueForSpecificUserResponse:any
@@ -238,6 +238,7 @@ setValues(){
     console.log(selectedIssue)
 sessionStorage.setItem('selectedIssue',selectedIssue)
 //console.log(selectedIssue)
+sessionStorage.setItem('selectedIssue',selectedIssue)
     const dialogRef = this.dialog.open(EditIssueComponent, {
       width: '1000px',
       data: {name: this.name, animal: this.animal}
