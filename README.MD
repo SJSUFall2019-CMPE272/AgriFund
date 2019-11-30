@@ -40,8 +40,9 @@ Donors :  People who are looking to donate for a cause, from individuals to huge
 
 	ARCHITECTURE
 
-![Architecture Diagram ](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/ArchitectureDiagram.jpg)
-
+![Architecture Diagram ]  (https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/Architecture.png)
+	
+	
 	BLOCK-CHAIN ARCHITECTURE
 	
 	
