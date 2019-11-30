@@ -5,18 +5,13 @@
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
-					<label class="control-label required">Issue Name</label>
-					<label>Value entered</label>
-					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter here</span>
+					<label class="control-label required">{{selectedIssue}}</label>
 				</div>
 			</div>
 
 			<div class="col-md-6">
 				<div class="form-group">
-					<label>Category selected</label>
-					<!-- <input  type="text" id="AddonName" #i="ngModel" disabled name="id" required class="form-control" [(ngModel)]="data.id"
-                        placeholder="Enter Value" /> -->
-					<span class="help-block" *ngIf="!ca.valid && ca.touched"> Please Enter value</span>
+					<label>farmer_issue</label>
 
 				</div>
 			</div>
@@ -25,9 +20,8 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label class="control-label required">Description</label>
-					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" required class="form-control" [(ngModel)]="description"
-                        placeholder="Enter Value" />
-					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter here</span>
+					<input  type="text" id="AddonName"  name="ratePlan" required class="form-control" [(ngModel)]="description"
+                        placeholder="Enter Value"/>
 				</div>
 			</div>
 		</div>
@@ -67,9 +61,8 @@
 									<div class="col-md-12">
 										<div class="form-group">
 											<label class="control-label required">Description</label>
-											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="problemsFaced"
+											<input  type="text" id="AddonName" name="ratePlan" class="form-control" [(ngModel)]="problemsFaced"
                         placeholder="Enter Here" />
-											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter Details</span>
 										</div>
 									</div>
 								</div>
@@ -90,10 +83,9 @@
 								<div class="row">
 									<div class="col-md-12">
 										<div class="form-group">
-											<label class="control-label required">Category</label>
-											<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="solutionProposed"
+											<label class="control-label required">Solution Proposed</label>
+											<input  type="text" id="AddonName"  name="ratePlan" class="form-control" [(ngModel)]="amtReq"
                         placeholder="Enter Here" />
-											<span class="help-block" *ngIf="!rp.valid && rp.touched"> Please Enter value</span>
 										</div>
 									</div>
 								</div>
@@ -108,9 +100,8 @@
 			<div class="col-md-12">
 				<div class="form-group">
 					<label class="control-label required">Amount Required($)</label>
-					<input  type="text" id="AddonName" #rp="ngModel" name="ratePlan" class="form-control" [(ngModel)]="amtReq"
+					<input  type="text" id="AddonName" name="ratePlan" class="form-control" [(ngModel)]="solutionProposed"
                         placeholder="Enter Here" />
-					<span class="help-block" *ngIf="!rp.valid && rp.touched"> Enter here</span>
 				</div>
 			</div>
 		</div>
@@ -119,5 +110,5 @@
 </div>
 <div mat-dialog-actions>
 	<button mat-button (click)="onNoClick()">No Thanks</button>
-	<button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Edit</button>
+	<button mat-button [mat-dialog-close]="" cdkFocusInitial (click)="editIssue()">Edit</button>
 </div>

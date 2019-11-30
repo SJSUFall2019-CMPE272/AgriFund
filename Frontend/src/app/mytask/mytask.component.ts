@@ -77,10 +77,8 @@ export class MytaskComponent implements OnInit {
 
 
   specificIssueResponceForUser:any=[
-    { Key: 'issue1', Record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} }
   ]
   allIssueResponce=[
-    { Key: 'issue1', Record:{description: 'borewell description',  status: 'open', issue_created_date: '11-12-2019'} },
   ]
   private ngVersion: string = VERSION.full;
     // Only required when not passing the id in methods
@@ -229,7 +227,10 @@ setValues(){
     });
   }
 
-  openDialog1(): void {
+  openDialog1(selectedIssue:any) {
+    console.log(selectedIssue)
+sessionStorage.setItem('selectedIssue',selectedIssue)
+//console.log(selectedIssue)
     const dialogRef = this.dialog.open(EditIssueComponent, {
       width: '1000px',
       data: {name: this.name, animal: this.animal}
