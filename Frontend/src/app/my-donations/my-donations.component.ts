@@ -102,7 +102,7 @@ export class MyDonationsComponent implements OnInit {
   conditionFlag: boolean = true;
   mode = new FormControl('over');
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'Actions'];
-  displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
+  displayedColumnsAllIssues: string[] = ['select', 'Id', 'Issue Name', 'Date', 'status','Actions'];
   dataSource = new MatTableDataSource<any>(this.specificDonoResponceForUser);
   dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
   
@@ -176,8 +176,7 @@ export class MyDonationsComponent implements OnInit {
   this.getAllDonationsForUser()
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
-    this.dataSource2.paginator=this.paginator
-    this.dataSource2.sort=this.sort
+    
   }
 
   
@@ -188,6 +187,8 @@ export class MyDonationsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.dataSource2.paginator=this.paginator
+    this.dataSource2.sort=this.sort
   }
 
   specificIssueForSpecificUserResponse:any=[

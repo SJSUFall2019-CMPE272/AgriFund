@@ -383,16 +383,16 @@ font-size: 14px; top: -4px;"></i>
                         </td>
                     </ng-container>
         
-                    <ng-container matColumnDef="position">
+                    <ng-container matColumnDef="Id">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
                         <td mat-cell *matCellDef="let element" (click)="getissue(element.Key, sidenav)"> {{element.Key}} </td>
                     </ng-container>
         
-                    <ng-container matColumnDef="name">
+                    <ng-container matColumnDef="Issue Name">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Name </th>
                         <td mat-cell *matCellDef="let element" > {{element.Record.issue}} </td>
                     </ng-container>
-                    <ng-container matColumnDef="Due">
+                    <ng-container matColumnDef="Date">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
                         <td mat-cell *matCellDef="let element"> {{element.Record.issue_created_date}} </td>
                     </ng-container>
@@ -412,7 +412,7 @@ font-size: 14px; top: -4px;"></i>
                     </ng-container>
         
                     <ng-container matColumnDef="Actions">
-                            <th mat-header-cell *matHeaderCellDef>  </th>
+                            <th mat-header-cell *matHeaderCellDef> Actions </th>
                             <td mat-cell *matCellDef="let element">
                                 <div class="button-toobar">
                                     <button class="btn btn-link btn-sm" (click)="openDialogDonate(element.Key)" type="button">
@@ -422,8 +422,8 @@ font-size: 14px; top: -4px;"></i>
                             </td>
                         </ng-container>
         
-                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
+                    <tr mat-header-row *matHeaderRowDef="displayedColumnsAllIssues"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumnsAllIssues;" (click)="selection.toggle(row)">
                     </tr>
                 </table>
         
