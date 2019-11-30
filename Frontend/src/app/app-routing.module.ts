@@ -13,6 +13,8 @@ import { LandingComponent } from './landing/landing.component';
 import { Login1Component } from './login1/login1.component';
 import { DonateComponent } from './donate/donate.component';
 import { ErrorComponent } from './error/error.component';
+import { MyDonationsComponent } from './my-donations/my-donations.component';
+import { DonorDashboardComponent } from './donor-dashboard/donor-dashboard.component';
 /* Component Import Ends */
 
 const appRoutes: Routes = [
@@ -30,6 +32,8 @@ const appRoutes: Routes = [
 	{path:"",component:LandingComponent},
 	{path:'login',component:Login1Component},
 	{path:'donate',component:DonateComponent},
+	{path:'mydonation',component:MyDonationsComponent},
+	{path:'donorDashboard',component:DonorDashboardComponent},
 	{path:'**',component:ErrorComponent}
 
 ];

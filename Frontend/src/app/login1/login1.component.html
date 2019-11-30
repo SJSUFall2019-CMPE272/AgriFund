@@ -27,10 +27,21 @@
         <h2 class="forms_title">Login</h2>
         
         <div class="login-form">
-          <input style="width: 300px;" type="email" placeholder="Username" [(ngModel)]="name"/><br><br>
-          <input style="width: 300px;" type="password" placeholder="Password" [(ngModel)]="password"/>
+            <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Full Name" [(ngModel)]="name">
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field><br>
+          
+          <mat-form-field class="example-form-field">
+              <input matInput type="password" placeholder="Password" [(ngModel)]="password">
+              <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field><br>
           <button mat-raised-button color="" style="  width: 10em;
-          margin-left: 10em; background: #37c964;  color: #fff ;top:100px;" (click)=login()>Log In</button>
+          margin-left: 10em; background: #37c964;  color: #fff ;top:10px;" (click)=login()>Log In</button>
         </div>
       </div>
       <div class="user_forms-signup">
@@ -65,7 +76,7 @@
             <mat-option value="donor">Donor</mat-option>
           </mat-select>
             <button mat-raised-button color="" style=" width: 10em;
-          margin-left: 10em; background: #37c964;  color: #fff ;" (click)=login()>Sign Up</button>
+          margin-left: 10em; background: #37c964;  color: #fff ;" (click)=signup()>Sign Up</button>
       </div>
     </div>
   </div>

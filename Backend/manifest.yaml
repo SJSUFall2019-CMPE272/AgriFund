@@ -1,0 +1,9 @@
+---
+applications:
+- name: backend-agrifund
+  memory: 256MB
+  instances: 1
+  host: backend-agrifund
+  command: npm start
+  buildpack: sdk-for-nodejs
+  path: .

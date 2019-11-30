@@ -1,0 +1,127 @@
+table {
+    width: 100%;
+  }
+  
+  
+  .btn-circle {
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    padding: 0;
+    border-radius: 50%;
+  }
+  
+  .btn-circle i {
+    position: relative;
+    top: -1px;
+    
+  }
+  
+  .btn-circle-sm {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 0.7rem;
+    
+  }
+  
+  .btn-circle-lg {
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    font-size: 1.1rem;
+  }
+  
+  .add{
+    background-color: black;
+  }
+  
+  .open{
+    background-color: #CF41E2;
+    color: white;
+  }
+  
+  .pending{
+    background-color: #EA8003;
+    color: white;
+  }
+  
+   .btn-circle i{
+    color: rgb(68, 68, 68);
+    font-size: 10px;
+  }
+  
+  .done{
+    background-color: #37C964;
+    color: white;
+  }
+  
+  .inprogress{
+    background-color: #002AD8;
+    color: white;
+  }
+  
+  button .fa-plus{
+    color: white;
+    font-size: 15px;
+  }
+  
+  .megamenu {
+    position: static;
+  }
+  
+  .megamenu .dropdown-menu {
+    background: none;
+    border: none;
+    width: 100%;
+  }
+  
+  .customWidth1{
+    width:44%;
+  }
+  .customWidth2{
+    width:100%;
+  }
+  .hideTwo{
+    display: none;
+  }
+  .example-card{
+    background: whitesmoke; 
+  }
+  .blue{
+    color:#4e6ce6;
+  }
+  .gray{
+    color:gray
+  }
+  
+  .btn-default  {
+    margin-right: 10px;
+    margin-top: 20px;
+  }
+  .btn-light{
+    margin-right: 10px;
+    margin-top: 20px;
+  }
+  .fs-16{
+    font-size: 16px;
+  }
+  .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  
+    border-bottom: 4px solid #ff0000 !important;
+    border: none;
+    background: transparent;
+    color: #4e6ce6;
+  }
+  .nav-tabs .nav-link {
+    color: #4e6ce6;
+  }
+  ::ng-deep .mat-step-icon {
+    background: black !important;
+    height: 50px !Important;
+    width: 50px !Important;
+  }
+  
+  
+  

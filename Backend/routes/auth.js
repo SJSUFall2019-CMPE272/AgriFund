@@ -2,6 +2,7 @@ const router = require('express').Router();
 const User = require('../model/User');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+var https = require('https');
 
 router.post('/signup', async (req,res) => {
    //check if user already exists
@@ -21,6 +22,60 @@ router.post('/signup', async (req,res) => {
    });
    try{
       const savedUser = await user.save();
+      // let options = {
+      //    method: 'POST',
+      //    url: 'https://chain-agrifund.mybluemix.net/api/register',
+      //    headers: {
+      //       'Content-Type': 'application/json'
+      //    },
+      //    body: JSON.stringify({
+      //       "user" : req.body.fullName
+      //    })
+      // };
+      // http(options, function(error, response, body){
+      //    if (error){
+      //       console.log("User not registered in blockchain wallet");
+      //    }
+      //    else{
+      //       console.log("User successfully registered into blockchain wallet");
+      //    }
+
+      // });
+
+      var options = {
+         'method': 'POST',
+         'hostname': 'chain-agrifund.mybluemix.net',
+         'path': '/api/register',
+         'headers': {
+           'Content-Type': 'application/json'
+         }
+       };
+       
+       var req = https.request(options, function (res) {
+         var chunks = [];
+       
+         res.on("data", function (chunk) {
+           chunks.push(chunk);
+         });
+       
+         res.on("end", function (chunk) {
+           var body = Buffer.concat(chunks);
+           console.log(body.toString());
+         });
+       
+         res.on("error", function (error) {
+           console.error(error);
+         });
+       });
+       
+       var postData =  JSON.stringify({
+          'user': savedUser.fullName
+       });
+       
+       req.write(postData);
+       
+       req.end();
+
       res.send( savedUser );
    }catch(err){
       res.send(400).send(err);

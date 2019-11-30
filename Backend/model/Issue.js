@@ -15,11 +15,11 @@ dotenv.config();
 //     collection = database.collection("issues");
 // });
 
-mongoose.connect(
-    process.env.DB_CONNECT_ISSUE,
-    { useNewUrlParser: true },
-    () => console.log('Connected to the database!')
-);
+// mongoose.connect(
+//     process.env.DB_CONNECT_ISSUE,
+//     { useNewUrlParser: true },
+//     () => console.log('Connected to the database!')
+// );
 
 const issueSchema = new mongoose.Schema({
     issueName: {
@@ -47,6 +47,7 @@ const issueSchema = new mongoose.Schema({
         type: String,
         required: true
     }
-});
+},
+{collection: 'issues'});
 
 module.exports = mongoose.model('Issue', issueSchema);

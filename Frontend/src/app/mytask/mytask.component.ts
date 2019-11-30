@@ -17,6 +17,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { MatStepper } from '@angular/material';
 import { DonateComponent } from '../donate/donate.component';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 const colors: any = {
   red: {
@@ -68,31 +70,16 @@ export class MytaskComponent implements OnInit {
  animal: string;
   name: string;
  test="test"
+
+
+
+
+
+
+
   specificIssueResponceForUser:any=[
-    { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
-    { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
-    { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
-    { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
-    { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
-    { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
-    { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
-    { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
-    { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
-    { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
-    { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
   ]
   allIssueResponce=[
-  { position: 1, name: 'Crops',  status: 'closed', Due: '29/10/2019' },
-  { position: 2, name: 'Equipment',  status: 'open', Due: '29/10/2019' },
-  { position: 3, name: 'Tools',  status: 'open', Due: '29/10/2019' },
-  { position: 4, name: 'Fertilizers',  status: 'closed', Due: '29/10/2019' },
-  { position: 5, name: 'Transport',  status: 'open', Due: '29/10/2019' },
-  { position: 6, name: 'Water',  status: 'closed', Due: '29/10/2019' },
-  { position: 7, name: 'Water',  status: 'open', Due: '29/10/2019' },
-  { position: 8, name: 'Vehicle',  status: 'closed', Due: '29/10/2019' },
-  { position: 9, name: 'Crops',  status: 'open', Due: '29/10/2019' },
-  { position: 10, name: 'Land',  status: 'closed', Due: '29/10/2019' },
-  { position: 11, name: 'Home',  status: 'closed', Due: '29/10/2019' },
   ]
   private ngVersion: string = VERSION.full;
     // Only required when not passing the id in methods
@@ -106,6 +93,7 @@ export class MytaskComponent implements OnInit {
   displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
   dataSource = new MatTableDataSource<any>(this.specificIssueResponceForUser);
   dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+  
   selection = new SelectionModel<any>(true, []);
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
@@ -121,7 +109,7 @@ export class MytaskComponent implements OnInit {
 
 
   activeDayIsOpen: boolean = true;
-  specificIssueDetails: any;
+  //specificIssueDetails: any;
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
@@ -165,59 +153,69 @@ export class MytaskComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  specificIssueResponce:any
-  constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal) { }
+  constructor(public toastr: ToastrService,private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient) { }
   
   username:any
-  ngOnInit() {
+  async ngOnInit() {
     this.userType=sessionStorage.getItem('userType')
-    
-  this.specificIssueResponceForUser=this._Mainservice.getAllIssueForUser(this.username)
-this.username=sessionStorage.getItem('name')
-this.allIssueResponce=this._Mainservice.getAllIssues()
-    
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-    //this.dataSource2.paginator=this.paginator
-    //this.dataSource2.sort=this.sort
+    this.username=sessionStorage.getItem('name')
+    this.getAllIssues()
+  
+  this.getAllIssueForUser()
+     this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+    this.dataSource2.paginator=this.paginator
+    this.dataSource2.sort=this.sort
     this.setValues()
-    
-
   }
-  specificIssueName:any
-  specifcIssueAttachment:any
-  specificIssueRaisedBY:any
-  specificIssueInfo:any
-  specificIssueProblemFaced:any
-  specificIssueSolutionProposed:any
-  specifcIssueOtherInformation:any
+
+  
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.dataSource2.filter = filterValue;
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+    
+    //window.alert(this.paginator)
+  }
 
   specificIssueForSpecificUserResponse:any
 
 setValues(){
-  this.specificIssueName="Crops";
-  this.specificIssueDetails="Need money for crops";
-  this.specifcIssueAttachment="Issue attachments";
-  this.specificIssueRaisedBY="Farmer1";
-  this.specificIssueInfo="Farmer contact email";
-  this.specificIssueProblemFaced="not able to plant crops";
-  this.specificIssueSolutionProposed="need money to buy crops";
-  this.specifcIssueOtherInformation="other info"
-
 
   this.specificIssueForSpecificUserResponse=[
     {
-    "issueName" : this.specificIssueName,
-    "issueDetails":this.specificIssueDetails,
-    "issueAttachments":this.specifcIssueAttachment,
-    "issueRaisedBy":this.specificIssueRaisedBY,
-    "issueInfo":this.specificIssueInfo,
-    "issueProblemFaced":this.specificIssueProblemFaced,
-    "issueSolutionProposed":this.specificIssueSolutionProposed,
-    "issueOtherInformation":this.specifcIssueOtherInformation
-}
-  ]
-console.log(this.specificIssueForSpecificUserResponse)
+        "key": "ISSUE8",
+        "Record": {
+            "description": "need more money to buy more land",
+            "docType": "farmer_issue",
+            "donators": [
+                {
+                    "donated_amount": 300,
+                    "donated_date": "11-27-2019",
+                    "donator_name": "Doremon"
+                },
+                {
+                    "donated_amount": 300,
+                    "donated_date": "11-27-2019",
+                    "donator_name": "ramya"
+                }
+            ],
+            "farmer_name": "Kowshhal",
+            "issue": "buy more land",
+            "issue_created_date": "11-12-2019",
+            "problem_faced": "problem faced to be updated",
+            "raised_amount": 600,
+            "requested_amount": "40000",
+            "solution_proposed": "solution to be updated",
+            "status": "closed"
+        }
+    }
+]
 }
 
   
@@ -234,7 +232,11 @@ console.log(this.specificIssueForSpecificUserResponse)
     });
   }
 
-  openDialog1(): void {
+  openDialog1(selectedIssue:any) {
+    console.log(selectedIssue)
+sessionStorage.setItem('selectedIssue',selectedIssue)
+//console.log(selectedIssue)
+sessionStorage.setItem('selectedIssue',selectedIssue)
     const dialogRef = this.dialog.open(EditIssueComponent, {
       width: '1000px',
       data: {name: this.name, animal: this.animal}
@@ -261,12 +263,60 @@ console.log(this.specificIssueForSpecificUserResponse)
 
   getissue(issueID:any, sidenav){
 
-    sidenav.toggle();
-
-    
+    //sessionStorage.setItem('issueId',issueID)
+      let header = new HttpHeaders();
+      header.append('Content-Type', 'application/json');
+       this.http.get("https://chain-agrifund.mybluemix.net/api/issues/"+issueID,{headers: header}).subscribe((res) => {
+              //tostr message
+              console.log(res);
+              this.specificIssueForSpecificUserResponse=res
+              sidenav.toggle();
+          });
+   
 
     //window.alert(issueID)
-console.log(issueID)
+//console.log(issueID)
   }
 
+
+  getAllIssuesForAUser(){
+this.specificIssueResponceForUser
+  }
+
+  getSpecificIssueforSpecificUser(){
+    this.specificIssueForSpecificUserResponse
+  }
+
+
+
+
+
+  getAllIssues():any{
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.get("https://chain-agrifund.mybluemix.net/api/issues",{headers: header}).subscribe((res) => {
+            //tostr message
+            console.log(res);
+this.allIssueResponce=<any>res
+            this.dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+            this.dataSource2.paginator=this.paginator
+            this.dataSource2.sort=this.sort
+        });
+
+        
+  }
+
+
+  getAllIssueForUser(){
+    let header = new HttpHeaders();
+    header.append('Content-Type', 'application/json');
+     this.http.get("https://chain-agrifund.mybluemix.net/api/farmers"+'/'+this.username,{headers: header}).subscribe((res) => {
+            //tostr message
+            this.specificIssueResponceForUser=<any>res
+            this.dataSource=new MatTableDataSource<any>(this.specificIssueResponceForUser)
+            console.log(res);
+            return res
+        });
+        
+  }
 }
