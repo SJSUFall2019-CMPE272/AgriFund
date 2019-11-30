@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from '../services/main.service';
+import { ToastrService } from 'ngx-toastr';
 
 export interface PeriodicElement1 {
   name: string;
@@ -32,7 +33,7 @@ export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'Task Name','Due At','Status'];
   dataSource = ELEMENT_DATA;
  issuesforSPecificUser:any
-  constructor(private _Mainservice: MainService) { }
+  constructor(private _Mainservice: MainService,public toastr: ToastrService) { }
 getAllIssuesForSpecificUsersResponce:any
   ngOnInit() {
     //this.username=sessionStorage.getItem('name')

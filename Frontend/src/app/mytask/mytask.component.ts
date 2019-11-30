@@ -18,6 +18,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatStepper } from '@angular/material';
 import { DonateComponent } from '../donate/donate.component';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 const colors: any = {
   red: {
@@ -152,7 +153,7 @@ export class MytaskComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient) { }
+  constructor(public toastr: ToastrService,private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient) { }
   
   username:any
   async ngOnInit() {

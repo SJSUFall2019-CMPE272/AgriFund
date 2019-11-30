@@ -39,16 +39,6 @@ export class MainService {
         });
   }
  
-  getSpecificIssueForSpecificUser(username:any,issueId:any):any{
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-     this.http.get("endpoint"+'/{'+username+'}'+'/{'+issueId+'}',{headers: header}).subscribe((res) => {
-            //tostr message
-            console.log(res);
-            return res
-        });
-  }
- 
 
   deleteSpecificIssue(){
     let header = new HttpHeaders();
@@ -60,22 +50,6 @@ export class MainService {
         });
   }
   
-  editSpecificIssue(selectedIssue:any,description:any,problemsFaced:any,solutionProposed:any,amtReq:any){
-    this.requestObject={
-      "issueName":selectedIssue,
-      "description":description,
-      "problemsFaced":problemsFaced,
-      "solutionProposed":solutionProposed,
-      "amountRequested":amtReq
-    }
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-     this.http.put("endpoint"+'/issues'/*+issueid */,this.requestObject,{headers: header}).subscribe((res) => {
-            //tostr message
-            console.log(res);
-            return res
-        });
-  }
 
   login(username:any,password:any):any{
     this.requestObject={
@@ -85,17 +59,21 @@ export class MainService {
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
      this.http.post("https://backend-agrifund.mybluemix.net"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
-            //tostr message
+            this.toastr.success("Welcome")
             sessionStorage.setItem('userType',res['userType'])
   sessionStorage.setItem('loggedIn','true')
   sessionStorage.setItem('flag','true')
     sessionStorage.setItem('name',username)
+    if(res['userType']==='farmer')
     this.router.navigate(['./dashboard'])
+    else
+    this.router.navigate(['./donorDashboard'])
             console.log(res);
-            this.toastr.success("Welcome")
+            
             location.reload()
-        });
-        
+        },
+err => {this.toastr.error('Login Failed!')
+console.log(err)});
   }
   signup(username:any,password:any,email:any,userType:any){
 
@@ -113,30 +91,19 @@ export class MainService {
             sessionStorage.setItem('flag','true')
               sessionStorage.setItem('name',username)
             sessionStorage.setItem('userType',res['userType'])
-            this.router.navigate(['./dashboard'])
+            if(res['userType']==='farmer')
+    this.router.navigate(['./dashboard'])
+    else
+    this.router.navigate(['./donorDashboard'])
             console.log(res);
             this.toastr.success("Welcome")
             location.reload()
             return res
-        });
+        },
+err => {this.toastr.error('SignUp Failed!')
+console.log(err)});
   }
 
-
-  donate(username: any,donateAmount: any,issueId: any){
-    this.requestObject={
-      "username":username,
-      "donatedAmount":donateAmount,
-      "issueId":issueId,
-    }
-    let header = new HttpHeaders();
-    header.append('Content-Type', 'application/json');
-     this.http.post("endpoint"+'/Donate',this.requestObject,{headers: header}).subscribe((res) => {
-            //tostr message
-            console.log(res);
-            return res
-        });
-
-  }
 
   getDonors(id: string){
     let header = new HttpHeaders();

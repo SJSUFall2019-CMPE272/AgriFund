@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Create_taskComponent } from '../create_task/create_task.component';
 import { MainService } from '../services/main.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-donate',
@@ -14,7 +15,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class DonateComponent implements OnInit {
   requestObject: { "donated_amount": any; "donated_date": any; "donator_name": any; };
   
-  constructor( private router:Router,private  elemRef: ElementRef,public dialogRef: MatDialogRef<Create_taskComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private http : HttpClient) {
+  constructor( public toastr: ToastrService,private router:Router,private  elemRef: ElementRef,public dialogRef: MatDialogRef<Create_taskComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private http : HttpClient) {
   }
   username:any
   issueSelected:any
@@ -51,9 +52,11 @@ onNoClick(): void {
     header.append('Content-Type', 'application/json');
      this.http.post("https://chain-agrifund.mybluemix.net/api/donate/"+this.issueSelected,this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
+            this.toastr.success("Donation SuccessFul")
             console.log(res);
             return res
-        });
+        },err => {this.toastr.error('SignUp Failed!')
+        console.log(err)});
 
   }
   

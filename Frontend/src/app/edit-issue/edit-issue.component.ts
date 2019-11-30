@@ -7,6 +7,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { MainService } from '../services/main.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-edit-issue',
   templateUrl: './edit-issue.component.html',
@@ -17,7 +18,7 @@ export class EditIssueComponent implements OnInit {
  selectedIssue:any
  category:any
  placeHolder:any
-  constructor( private  elemRef: ElementRef,
+  constructor( private  elemRef: ElementRef,public toastr: ToastrService,
     public dialogRef: MatDialogRef<EditIssueComponent>, @Inject(MAT_DIALOG_DATA) public data: any,private mainService:MainService,private http : HttpClient,private router:Router) { }
     username:any
     ngOnInit() { 
@@ -60,7 +61,7 @@ requestObject:any
       header.append('Content-Type', 'application/json');
        this.http.put("https://chain-agrifund.mybluemix.net/api/issues/"+this.selectedIssue,this.requestObject,{headers: header}).subscribe((res) => {
              this.router.navigate(['./mytask']);
-              //tostr message
+              this.toastr.success('Issue edited')
              console.log(res);
           });
   

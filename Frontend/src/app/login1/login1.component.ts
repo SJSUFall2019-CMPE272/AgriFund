@@ -41,12 +41,11 @@ userForms.classList.add('bounceRight')
 login(){
 
   this.mainService.login(this.name,this.password)
-  //location.reload()
-  //this.router.navigate(['./dashboard'])
 }
 signup(){
-  sessionStorage.setItem('loggedIn','true')
   this.mainService.signup(this.name,this.password,this.email,this.selectedLevel)
-  //this.router.navigate(['./dashboard'])
 }
+
+
+
 }

@@ -15,10 +15,15 @@
 
     <div>
       <mat-nav-list>
-          <a mat-list-item routerLink="dashboard">
+          <a *ngIf="userType==='farmer'" mat-list-item routerLink="dashboard">
               <mat-icon style="padding-right:5px;">dashboard</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'">Dashboard </span>
-            </a>           
+            </a>   
+            
+            <a *ngIf="userType==='donor'" mat-list-item routerLink="donorDashboard">
+                <mat-icon style="padding-right:5px;">dashboard</mat-icon>
+                <span [@animateText]="linkText ? 'show' : 'hide'">Dashboard </span>
+              </a>   
         <a *ngIf="userType==='farmer'" mat-list-item routerLink="mytask">
           <mat-icon style="padding-right:5px;">person</mat-icon>
           <span [@animateText]="linkText ? 'show' : 'hide'">My Issues </span>

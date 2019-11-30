@@ -6,6 +6,7 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class Create_taskComponent implements OnInit {
   amtReq:any
   d = new Date();
   dateString:any
-  constructor( private  elemRef: ElementRef,private http : HttpClient,private router: Router,
+  constructor( private  elemRef: ElementRef,private http : HttpClient,private router: Router,public toastr: ToastrService,
   public dialogRef: MatDialogRef<Create_taskComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   username:any
@@ -60,7 +61,7 @@ export class Create_taskComponent implements OnInit {
      header.append('Content-Type', 'application/json');
       this.http.post("https://chain-agrifund.mybluemix.net/api/issues",this.requestObject,{headers: header}).subscribe((res) => {
              this.router.navigate(['./mytask']);
-             //tostr message
+             this.toastr.success('Issue Created')
             console.log(res);
          });
   }
