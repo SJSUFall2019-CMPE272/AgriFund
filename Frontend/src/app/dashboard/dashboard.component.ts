@@ -55,6 +55,11 @@ ELEMENT_DATA:any[]=[
   constructor(private _Mainservice: MainService,public toastr: ToastrService,private http : HttpClient, private router: Router) { }
 getAllIssuesForSpecificUsersResponce:any
   ngOnInit() {
+    if(sessionStorage.getItem('lIn')===null){
+      this.toastr.error('Please Login First')
+      this.router.navigate(['./login'])
+      return 
+    }
     this.username=sessionStorage.getItem('name')
     this.getAllIssueForUser()
   }

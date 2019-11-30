@@ -3,6 +3,7 @@ import { MainService } from '../services/main.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -51,9 +52,14 @@ export class DonorDashboardComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'Task Name','Due At'];
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
  issuesforSPecificUser:any
-  constructor(private _Mainservice: MainService,private http : HttpClient,private router:Router) { }
+  constructor(private _Mainservice: MainService,private http : HttpClient,private router:Router,public toastr: ToastrService) { }
 
   ngOnInit() {
+    if(sessionStorage.getItem('lIn')===null){
+      this.toastr.error('Please Login First')
+      this.router.navigate(['./login'])
+      return 
+    }
     this.username=sessionStorage.getItem('name')
    this.getAllDonationsForUser()
     if(sessionStorage.getItem('flag')==='true'){

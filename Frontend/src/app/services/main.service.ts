@@ -61,6 +61,7 @@ export class MainService {
      this.http.post("https://backend-agrifund.mybluemix.net"+'/login',this.requestObject,{headers: header}).subscribe((res) => {
             this.toastr.success("Welcome")
             sessionStorage.setItem('userType',res['userType'])
+            sessionStorage.setItem('lIn','true')
   sessionStorage.setItem('loggedIn','true')
   sessionStorage.setItem('flag','true')
     sessionStorage.setItem('name',username)
@@ -89,6 +90,7 @@ console.log(err)});
             //tostr message
             sessionStorage.setItem('loggedIn','true')
             sessionStorage.setItem('flag','true')
+            sessionStorage.setItem('lIn','true')
               sessionStorage.setItem('name',username)
             sessionStorage.setItem('userType',res['userType'])
             if(res['userType']==='farmer')

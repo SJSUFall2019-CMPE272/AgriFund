@@ -21,6 +21,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatStepper } from '@angular/material';
 import { DonateComponent } from '../donate/donate.component';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 const colors: any = {
   red: {
@@ -186,10 +188,15 @@ export class MyDonationsComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Id + 1}`;
   }
 
-  constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient) { }
+  constructor(public toastr: ToastrService,private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient,private router:Router) { }
   
   username:any
   async ngOnInit() {
+    if(sessionStorage.getItem('lIn')===null){
+      this.toastr.error('Please Login First')
+      this.router.navigate(['./login'])
+      return 
+    }
     this.userType=sessionStorage.getItem('userType')
     this.username=sessionStorage.getItem('name')
     this.getAllIssues()
@@ -206,9 +213,7 @@ export class MyDonationsComponent implements OnInit {
     this.dataSource2.filter = filterValue;
   }
 
-  ngAfterViewInit() {
-    
-  }
+  
 
   specificIssueForSpecificUserResponse:any=[
     {

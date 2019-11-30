@@ -27,6 +27,11 @@ onNoClick(): void {
   this.dialogRef.close();
 }
   ngOnInit() {
+    if(sessionStorage.getItem('lIn')===null){
+      this.toastr.error('Please Login First')
+      this.router.navigate(['./login'])
+      return 
+    }
     this.username=sessionStorage.getItem('name')
     this.issueSelected=sessionStorage.getItem('selectedIssue')
     this.dateString = this.d.getDate()  + "-" + (this.d.getMonth()+1) + "-" + this.d.getFullYear()

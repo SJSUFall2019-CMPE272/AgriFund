@@ -19,6 +19,7 @@ import { MatStepper } from '@angular/material';
 import { DonateComponent } from '../donate/donate.component';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 const colors: any = {
   red: {
@@ -153,10 +154,15 @@ export class MytaskComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
 
-  constructor(public toastr: ToastrService,private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient) { }
+  constructor(public toastr: ToastrService,private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient,private router: Router) { }
   
   username:any
-  async ngOnInit() {
+   ngOnInit() {
+    if(sessionStorage.getItem('lIn')===null){
+      this.toastr.error('Please Login First')
+      this.router.navigate(['./login'])
+      return 
+    }
     this.userType=sessionStorage.getItem('userType')
     this.username=sessionStorage.getItem('name')
     this.getAllIssues()
@@ -167,6 +173,7 @@ export class MytaskComponent implements OnInit {
     this.dataSource2.paginator=this.paginator
     this.dataSource2.sort=this.sort
     this.setValues()
+    
   }
 
   
