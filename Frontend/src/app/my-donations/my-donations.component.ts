@@ -75,22 +75,7 @@ export class MyDonationsComponent implements OnInit {
 
 
   specificDonoResponceForUser:any=[
-    {
-      "_id": "5de04b7de7e218460b3662d1",
-      "issueName": "Tractor",
-      "donorName": "DHana",
-      "donatedAmount": "100",
-      "donatedDate": "2019-11-28T08:00:00.000Z",
-      "__v": 0
-  },
-  {
-      "_id": "5de0608ee549bf4969141bfe",
-      "issueName": "Water",
-      "donorName": "DHana",
-      "donatedAmount": "10",
-      "donatedDate": "2019-11-28T08:00:00.000Z",
-      "__v": 0
-  }
+    
   ]
   allIssueResponce:PeriodicElement[]=[
   ]
@@ -124,8 +109,6 @@ export class MyDonationsComponent implements OnInit {
   }
 
   setDataSourceAttributes() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
 
     this.dataSource2.paginator=this.paginator
     this.dataSource2.sort=this.sort
@@ -330,8 +313,6 @@ this.allIssueResponce=<PeriodicElement[]>res
             this.specificDonoResponceForUser=<any>res
             this.dataSource=new MatTableDataSource<any>(this.specificDonoResponceForUser)
             console.log(res);
-            this.dataSource.sort = this.sort;
-     this.dataSource.paginator = this.paginator;
             return res
         });
         

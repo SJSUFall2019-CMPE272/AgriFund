@@ -15,38 +15,6 @@ import { MatTableDataSource } from '@angular/material';
 export class DashboardComponent implements OnInit {
   
 ELEMENT_DATA:any[]=[
-  {
-      Key: "ISSUE2",
-      Record: {
-          "description": "crops description updated again",
-          "docType": "farmer_issue",
-          "donators": [],
-          "farmer_name": "ramya",
-          "issue": "crops",
-          "issue_created_date": "11-27-2019",
-          "problem_faced": "problem faced updated again",
-          "raised_amount": "0",
-          "requested_amount": "30000",
-          "solution_proposed": "solution updated again",
-          "status": "closed"
-      }
-  },
-  {
-      Key: "ISSUE9",
-      Record: {
-          "description": "need money to get a borewell",
-          "docType": "farmer_issue",
-          "donators": [],
-          "farmer_name": "ramya",
-          "issue": "water problem",
-          "issue_created_date": "11-28-2019",
-          "problem_faced": "problem faced to be updated",
-          "raised_amount": 0,
-          "requested_amount": 5000,
-          "solution_proposed": "solution to be updated",
-          "status": "open"
-      }
-  }
 ]
   username:any
   displayedColumns: string[] = ['Id', 'Task Name','Due At','Status'];

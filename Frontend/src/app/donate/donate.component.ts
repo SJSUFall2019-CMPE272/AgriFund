@@ -68,7 +68,7 @@ onNoClick(): void {
 
 
         this.request1Object={
-          "donatedAmount":"5",
+          "donatedAmount":this.donateAmount.toString(),
           "donatedDate":"2019-11-29",
           "donorName":this.username,
           "issueId":this.issueSelected

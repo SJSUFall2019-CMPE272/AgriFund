@@ -3,24 +3,12 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <span class="fa-stack fa-sm float-right">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i class="fa fa-edit fa-stack-1x"></i>
-            </span>
-            <span class="fa-stack fa-sm float-right">
-                <i class="fa fa-circle-thin fa-stack-2x"></i>
-                <i class="fa fa-plus fa-stack-1x"></i>
-            </span>
         </div>
     </div>
     <div class="row" style=" border: 1px solid lightgray; ">
         <div class="col-md-12">
             <h5 class>Issues by Status</h5>
             <span class="d-inline">{{username}}</span>
-            <span class="fa-stack fa-sm float-right" style=" margin-top: -2em; ">
-                <!-- <i class="fa fa-circle-thin fa-stack-2x"></i> -->
-                <i class="fa fa-cog fa-stack-1x"></i>
-            </span>
 
 
         </div>
@@ -43,7 +31,6 @@
                     <h5 class>Issues by Status</h5>
                     <span class="d-inline">{{username}}</span>
                     <span class="fa-stack fa-sm float-right" style=" margin-top: -2em; ">
-                        <!-- <i class="fa fa-circle-thin fa-stack-2x"></i> -->
                         <i class="fa fa-cog fa-stack-1x"></i>
                     </span>
 
@@ -55,19 +42,9 @@
                     
                <div class="col-md-12" style=" margin-left: 19px; border: 1px solid lightgray; ">
                     <h5 class>Issues by Status</h5>
-                    <span class="d-inline">{{username}}</span>
-                    <span class="fa-stack fa-sm float-right" style=" margin-top: -2em; ">
-                        <!-- <i class="fa fa-circle-thin fa-stack-2x"></i> -->
-                        <i class="fa fa-cog fa-stack-1x"></i>
-                    </span>
-                 
+                    <span class="d-inline">{{username}}</span>        
 
                             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" style=" width: -webkit-fill-available; ">
-
-                                    <!--- Note that these columns can be defined in any order.
-                                          The actual rendered columns are set as a property on the row definition" -->
-                                  
-                                    <!-- Position Column -->
                                     <ng-container matColumnDef="Id">
                                       <th mat-header-cell *matHeaderCellDef> No. </th>
                                       <td mat-cell *matCellDef="let element"> {{element.Key}} </td>
