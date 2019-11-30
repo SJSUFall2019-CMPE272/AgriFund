@@ -68,3 +68,6 @@ Donors :  People who are looking to donate for a cause, from individuals to huge
 ![Login Functionality diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/Login_functionality.png)
 
 
+![donor functionality diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/donor_functionality.png)
+
+
