@@ -50,17 +50,18 @@ onNoClick(): void {
 
   donate(){
     this.requestObject={
-      "donated_amount":this.donateAmount,
-      "donated_date":this.dateString,
-      "donator_name":this.username,
+      "donated_amount":this.donateAmount.toString(),
+      "donated_date":this.dateString.toString(),
+      "donator_name":this.username.toString(),
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     JSON.stringify(this.requestObject)
       this.http.post("https://chain-agrifund.mybluemix.net/api/donate/"+this.issueSelected,this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
+            //location.reload()
             this.toastr.success("Donation SuccessFul")
              console.log(res);
+
             return res
          },err => {this.toastr.error('SignUp Failed!')
         console.log(err)});
@@ -72,7 +73,6 @@ onNoClick(): void {
           "donorName":this.username,
           "issueId":this.issueSelected
         }
-console.log(JSON.stringify(this.request1Object))
         this.http.post("https://backend-agrifund.mybluemix.net/donors",this.request1Object,{headers: header}).subscribe((res) => {
           console.log(res);
           return res
