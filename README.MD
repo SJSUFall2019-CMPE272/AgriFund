@@ -46,6 +46,6 @@ Donors :  People who are looking to donate for a cause, from individuals to huge
 	BLOCK-CHAIN ARCHITECTURE
 	
 	
-![Blockchain flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/BlockChain.jpg)
+![Blockchain flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/transaction.png)
 
 
