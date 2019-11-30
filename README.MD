@@ -48,4 +48,9 @@ Donors :  People who are looking to donate for a cause, from individuals to huge
 	
 ![Blockchain flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/transaction.png)
 
+	
+	DESIGN THINKING
+
+![As-Is_Donor flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/As-Is_Donor.jpeg)
+
 
