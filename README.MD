@@ -26,16 +26,26 @@ Crowdfunding is a form of alternative sourcing that can be used to raise funds b
 Our system: 
 The app will contain verified farmers & donors. Farmers can list their problems, requirements and approximate funds needed. Funds will be raised using crowdfunding and farmers may provide receipts of utilization of funds that have been allocated.  Donors and farmers will have access to see the flow of funds from origin to the end with a donation ledger that keeps track of the flow of funds. This will help create accountability and accessibility between individuals and organizations. Donors will know the impact of their money. It creates a perfect environment of digital trust without having a centralized authority to maintain the system.
 
+
 	TECHNOLOGY STACK
 NodeJS, MongoAtlas, IBM Blockchain Technology,IBM Cloud Foundry, Angular8, AWS.
 
+
+	Personas/Target users :
+	
+Farmers : All kind of farmers, agricultural, livestock, etc can use the app to list their issues and look for donors.
+
+Donors :  People who are looking to donate for a cause, from individuals to huge companies or industries.
+
+
 	ARCHITECTURE
 
-![Architecture Diagram ](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/ArchitectureDiagram.jpg)
-
+![Architecture Diagram ](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/Architecture.png)
+	
+	
 	BLOCK-CHAIN ARCHITECTURE
 	
 	
-![Blockchain flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/BlockChain.jpg)
+![Blockchain flow diagram](https://github.com/SJSUFall2019-CMPE272/AgriFund/blob/master/transaction.png)
 
 
