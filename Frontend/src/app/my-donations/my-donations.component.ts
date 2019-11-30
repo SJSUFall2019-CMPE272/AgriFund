@@ -53,11 +53,10 @@ export interface DialogData {
 
 
 export interface PeriodicElement {
-  name: string;
-  position: number;
-status: string;
-  Due: string;
-
+  Id: string;
+  IssueName: string;
+  Date: string;
+  status: string;
 }
 
 
@@ -91,7 +90,7 @@ export class MyDonationsComponent implements OnInit {
       "__v": 0
   }
   ]
-  allIssueResponce=[
+  allIssueResponce:PeriodicElement[]=[
   ]
   private ngVersion: string = VERSION.full;
     // Only required when not passing the id in methods
@@ -102,14 +101,36 @@ export class MyDonationsComponent implements OnInit {
   conditionFlag: boolean = true;
   mode = new FormControl('over');
   displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'Actions'];
-  displayedColumnsAllIssues: string[] = ['select', 'Id', 'Issue Name', 'Date', 'status','Actions'];
+  displayedColumnsAllIssues: string[] = ['select', 'Id', 'IssueName', 'Date', 'status','Actions'];
   dataSource = new MatTableDataSource<any>(this.specificDonoResponceForUser);
-  dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+  dataSource2=new MatTableDataSource<PeriodicElement>(this.allIssueResponce)
   
   selection = new SelectionModel<any>(true, []);
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  // @ViewChild(MatSort, { static: true }) sort: MatSort;
+  // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  private paginator: MatPaginator;
+  private sort: MatSort;
 
+  @ViewChild(MatSort,{ static: true }) set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSourceAttributes();
+  }
+
+  @ViewChild(MatPaginator, { static: true }) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.setDataSourceAttributes();
+  }
+
+  setDataSourceAttributes() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.dataSource2.paginator=this.paginator
+    this.dataSource2.sort=this.sort
+    if (this.paginator && this.sort) {
+      this.applyFilter('');
+    }
+  }
 
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
 
@@ -162,7 +183,7 @@ export class MyDonationsComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Id + 1}`;
   }
 
   constructor(private _Mainservice: MainService, public dialog: MatDialog,private elemRef: ElementRef, private modal: NgbModal,private http : HttpClient) { }
@@ -187,8 +208,7 @@ export class MyDonationsComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource2.paginator=this.paginator
-    this.dataSource2.sort=this.sort
+    
   }
 
   specificIssueForSpecificUserResponse:any=[
@@ -289,8 +309,10 @@ sessionStorage.setItem('selectedIssue',selectedIssue)
      this.http.get("https://chain-agrifund.mybluemix.net/api/issues",{headers: header}).subscribe((res) => {
             //tostr message
             console.log(res);
-this.allIssueResponce=<any>res
-            this.dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+this.allIssueResponce=<PeriodicElement[]>res
+            this.dataSource2=new MatTableDataSource<PeriodicElement>(this.allIssueResponce)
+            this.dataSource2.paginator=this.paginator
+    this.dataSource2.sort=this.sort
         });
 
         
