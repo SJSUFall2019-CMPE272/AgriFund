@@ -28,7 +28,7 @@ onNoClick(): void {
 }
   ngOnInit() {
     this.username=sessionStorage.getItem('name')
-    this.issueSelected=sessionStorage.getItem('issueSelected')
+    this.issueSelected=sessionStorage.getItem('selectedIssue')
     this.dateString = this.d.getDate()  + "-" + (this.d.getMonth()+1) + "-" + this.d.getFullYear()
   }
   
@@ -51,20 +51,23 @@ onNoClick(): void {
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.post("https://chain-agrifund.mybluemix.net/api/donate/"+this.issueSelected,this.requestObject,{headers: header}).subscribe((res) => {
+     JSON.stringify(this.requestObject)
+      this.http.post("https://chain-agrifund.mybluemix.net/api/donate/"+this.issueSelected,this.requestObject,{headers: header}).subscribe((res) => {
             //tostr message
             this.toastr.success("Donation SuccessFul")
-            console.log(res);
+             console.log(res);
             return res
-        },err => {this.toastr.error('SignUp Failed!')
+         },err => {this.toastr.error('SignUp Failed!')
         console.log(err)});
+
+
         this.request1Object={
-          "donatedAmount":this.donateAmount,
-          "donatedDate":this.donateAmount,
+          "donatedAmount":"5",
+          "donatedDate":"2019-11-29",
           "donorName":this.username,
           "issueId":this.issueSelected
         }
-
+console.log(JSON.stringify(this.request1Object))
         this.http.post("https://backend-agrifund.mybluemix.net/donors",this.request1Object,{headers: header}).subscribe((res) => {
           console.log(res);
           return res

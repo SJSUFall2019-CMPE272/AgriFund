@@ -73,7 +73,23 @@ export class MyDonationsComponent implements OnInit {
   name: string;
 
 
-  specificIssueResponceForUser:any=[
+  specificDonoResponceForUser:any=[
+    {
+      "_id": "5de04b7de7e218460b3662d1",
+      "issueName": "Tractor",
+      "donorName": "DHana",
+      "donatedAmount": "100",
+      "donatedDate": "2019-11-28T08:00:00.000Z",
+      "__v": 0
+  },
+  {
+      "_id": "5de0608ee549bf4969141bfe",
+      "issueName": "Water",
+      "donorName": "DHana",
+      "donatedAmount": "10",
+      "donatedDate": "2019-11-28T08:00:00.000Z",
+      "__v": 0
+  }
   ]
   allIssueResponce=[
   ]
@@ -85,9 +101,9 @@ export class MyDonationsComponent implements OnInit {
   public sidenav: any;
   conditionFlag: boolean = true;
   mode = new FormControl('over');
-  displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'status', 'Actions'];
+  displayedColumns: string[] = ['select', 'position', 'name', 'Due', 'Actions'];
   displayedColumnsAllIssues: string[] = ['select', 'position', 'name', 'Due', 'status'];
-  dataSource = new MatTableDataSource<any>(this.specificIssueResponceForUser);
+  dataSource = new MatTableDataSource<any>(this.specificDonoResponceForUser);
   dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
   
   selection = new SelectionModel<any>(true, []);
@@ -157,12 +173,11 @@ export class MyDonationsComponent implements OnInit {
     this.username=sessionStorage.getItem('name')
     this.getAllIssues()
   
-  this.getAllIssueForUser()
+  this.getAllDonationsForUser()
      this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
     this.dataSource2.paginator=this.paginator
     this.dataSource2.sort=this.sort
-    this.setValues()
   }
 
   
@@ -175,13 +190,35 @@ export class MyDonationsComponent implements OnInit {
   ngAfterViewInit() {
   }
 
-  specificIssueForSpecificUserResponse:any
-
-setValues(){
-
-  this.specificIssueForSpecificUserResponse=[
+  specificIssueForSpecificUserResponse:any=[
+    {
+        "key": "ISSUE8",
+        "Record": {
+            "description": "need more money to buy more land",
+            "docType": "farmer_issue",
+            "donators": [
+                {
+                    "donated_amount": 300,
+                    "donated_date": "11-27-2019",
+                    "donator_name": "Doremon"
+                },
+                {
+                    "donated_amount": 300,
+                    "donated_date": "11-27-2019",
+                    "donator_name": "ramya"
+                }
+            ],
+            "farmer_name": "Kowshhal",
+            "issue": "buy more land",
+            "issue_created_date": "11-12-2019",
+            "problem_faced": "problem faced to be updated",
+            "raised_amount": 600,
+            "requested_amount": "40000",
+            "solution_proposed": "solution to be updated",
+            "status": "closed"
+        }
+    }
 ]
-}
 
   
   seletedissue:any
@@ -213,7 +250,8 @@ sessionStorage.setItem('selectedIssue',selectedIssue)
   }
 
 
-  openDialogDonate(): void {
+  openDialogDonate(selectedIssue): void {
+    sessionStorage.setItem('selectedIssue',selectedIssue)
     const dialogRef = this.dialog.open(DonateComponent, {
       width: '550px',
       data: {name: this.name, animal: this.animal}
@@ -258,13 +296,12 @@ this.allIssueResponce=<any>res
   }
 
 
-  getAllIssueForUser(){
+  getAllDonationsForUser(){
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
-     this.http.get("https://chain-agrifund.mybluemix.net/api/farmers"+'/'+this.username,{headers: header}).subscribe((res) => {
-            //tostr message
-            this.specificIssueResponceForUser=<any>res
-            this.dataSource=new MatTableDataSource<any>(this.specificIssueResponceForUser)
+     this.http.get("https://backend-agrifund.mybluemix.net/donors/"+this.username,{headers: header}).subscribe((res) => {
+            this.specificDonoResponceForUser=<any>res
+            this.dataSource=new MatTableDataSource<any>(this.specificDonoResponceForUser)
             console.log(res);
             return res
         });

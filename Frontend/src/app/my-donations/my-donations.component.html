@@ -291,40 +291,26 @@ font-size: 14px; top: -4px;"></i>
 			
 			<ng-container matColumnDef="position">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
-				<td mat-cell *matCellDef="let element" (click)="getissue(element.Key, sidenav)"> {{element.Key}} </td>
+				<td mat-cell *matCellDef="let element" (click)="getissue(element.issueId, sidenav)"> {{element.issueId}} </td>
 			</ng-container>
 
-			
-			<ng-container matColumnDef="name">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Name </th>
-				<td mat-cell *matCellDef="let element" > {{element.Record.issue}} </td>
-			</ng-container>
-
+            <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Donated Amount</th>
+                    <td mat-cell *matCellDef="let element"> {{element.donatedAmount}} </td>
+                </ng-container>
 		
 			<ng-container matColumnDef="Due">
 				<th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
-				<td mat-cell *matCellDef="let element"> {{element.Record.issue_created_date}} </td>
+				<td mat-cell *matCellDef="let element"> {{element.donatedDate}} </td>
 			</ng-container>
 
-	
-			<ng-container matColumnDef="status">
-				<th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
-				<td mat-cell *matCellDef="let element">
-
-					<button *ngIf="element.Record.status===undefined" mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.Record.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#F90000'}" (click)="ondelete(row.productID)" type="button">
-						closed
-					</button>
-					<button *ngIf="element.Record.status!==undefined" mat-raised-button style="width: 40%; color: white;" [ngStyle]="element.Record.status==='closed'?{'background-color': '#F90000'} : {'background-color': '#05C700'}" (click)="ondelete(row.productID)" type="button">
-						{{element.Record.status}}
-					</button>
-				</td>
-			</ng-container>
+            
     
                 <ng-container matColumnDef="Actions">
                     <th mat-header-cell *matHeaderCellDef>  </th>
-                    <td mat-cell *matCellDef="let row">
+                    <td mat-cell *matCellDef="let element">
                         <div class="button-toobar">
-                            <button class="btn btn-link btn-sm" (click)="openDialogDonate()" type="button">
+                            <button class="btn btn-link btn-sm" (click)="openDialogDonate(element._id)" type="button">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <mat-menu #menu="matMenu">
@@ -427,9 +413,9 @@ font-size: 14px; top: -4px;"></i>
         
                     <ng-container matColumnDef="Actions">
                             <th mat-header-cell *matHeaderCellDef>  </th>
-                            <td mat-cell *matCellDef="let row">
+                            <td mat-cell *matCellDef="let element">
                                 <div class="button-toobar">
-                                    <button class="btn btn-link btn-sm" (click)="openDialogDonate()" type="button">
+                                    <button class="btn btn-link btn-sm" (click)="openDialogDonate(element.Key)" type="button">
                                         <i class="fa fa-edit"></i>
                                     </button>
                                 </div>

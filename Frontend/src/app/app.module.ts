@@ -53,6 +53,7 @@ import { DonateComponent } from './donate/donate.component';
 import { ErrorComponent } from './error/error.component';
 import { MyDonationsComponent } from './my-donations/my-donations.component';
 import { DonorDashboardComponent } from './donor-dashboard/donor-dashboard.component';
+import { MatTableModule, MatSortModule } from '@angular/material';
 /* Widget Import Ends */
 
 @NgModule({
@@ -100,6 +101,9 @@ import { DonorDashboardComponent } from './donor-dashboard/donor-dashboard.compo
     AppRoutingModule,
 
     ReactiveFormsModule,
+    BrowserModule,
+    MatTableModule,
+    MatSortModule,
     
     
 	/* Widget NgModule Imports Starts */

@@ -174,9 +174,15 @@ export class MytaskComponent implements OnInit {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+    this.dataSource2.filter=filterValue
   }
 
   ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
+    this.dataSource2.paginator=this.paginator
+    this.dataSource2.sort=this.sort
+    window.alert(this.paginator)
   }
 
   specificIssueForSpecificUserResponse:any
