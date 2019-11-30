@@ -71,12 +71,6 @@ export class MyDonationsComponent implements OnInit {
   userType:any
  animal: string;
   name: string;
- test="test"
-
-
-
-
-
 
 
   specificIssueResponceForUser:any=[
@@ -186,33 +180,6 @@ export class MyDonationsComponent implements OnInit {
 setValues(){
 
   this.specificIssueForSpecificUserResponse=[
-    {
-        "key": "ISSUE8",
-        "Record": {
-            "description": "need more money to buy more land",
-            "docType": "farmer_issue",
-            "donators": [
-                {
-                    "donated_amount": 300,
-                    "donated_date": "11-27-2019",
-                    "donator_name": "Doremon"
-                },
-                {
-                    "donated_amount": 300,
-                    "donated_date": "11-27-2019",
-                    "donator_name": "ramya"
-                }
-            ],
-            "farmer_name": "Kowshhal",
-            "issue": "buy more land",
-            "issue_created_date": "11-12-2019",
-            "problem_faced": "problem faced to be updated",
-            "raised_amount": 600,
-            "requested_amount": "40000",
-            "solution_proposed": "solution to be updated",
-            "status": "closed"
-        }
-    }
 ]
 }
 

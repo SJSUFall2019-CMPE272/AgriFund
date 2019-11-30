@@ -14,6 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DonateComponent implements OnInit {
   requestObject: { "donated_amount": any; "donated_date": any; "donator_name": any; };
+  request1Object: { "donatedAmount": any; "donatedDate": any; "donorName": any; "issueId": any; };
   
   constructor( public toastr: ToastrService,private router:Router,private  elemRef: ElementRef,public dialogRef: MatDialogRef<Create_taskComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private http : HttpClient) {
   }
@@ -45,8 +46,8 @@ onNoClick(): void {
   donate(){
     this.requestObject={
       "donated_amount":this.donateAmount,
-      "donated_date":this.donateAmount,
-      "donator_name":this.issueSelected,
+      "donated_date":this.dateString,
+      "donator_name":this.username,
     }
     let header = new HttpHeaders();
     header.append('Content-Type', 'application/json');
@@ -57,7 +58,20 @@ onNoClick(): void {
             return res
         },err => {this.toastr.error('SignUp Failed!')
         console.log(err)});
+        this.request1Object={
+          "donatedAmount":this.donateAmount,
+          "donatedDate":this.donateAmount,
+          "donorName":this.username,
+          "issueId":this.issueSelected
+        }
 
+        this.http.post("https://backend-agrifund.mybluemix.net/donors",this.request1Object,{headers: header}).subscribe((res) => {
+          console.log(res);
+          return res
+      },err => {this.toastr.error('SignUp Failed!')
+      console.log(err)});
+
+    
   }
   
 }
