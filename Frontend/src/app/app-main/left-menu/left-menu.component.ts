@@ -35,7 +35,11 @@ export class LeftMenuComponent implements OnInit {
 
   constructor(private _sidenavService: SidenavService,private router: Router) { }
 
-  ngOnInit() {}
+  userType:any
+  ngOnInit() {
+this.userType=sessionStorage.getItem('userType')
+console.log(this.userType)
+  }
     
   gotoProfile()
   {

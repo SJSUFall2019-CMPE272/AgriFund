@@ -19,10 +19,14 @@
               <mat-icon style="padding-right:5px;">dashboard</mat-icon>
               <span [@animateText]="linkText ? 'show' : 'hide'">Dashboard </span>
             </a>           
-        <a mat-list-item routerLink="mytask">
+        <a *ngIf="userType==='farmer'" mat-list-item routerLink="mytask">
           <mat-icon style="padding-right:5px;">person</mat-icon>
           <span [@animateText]="linkText ? 'show' : 'hide'">My Issues </span>
         </a>
+        <a *ngIf="userType==='donor'" mat-list-item routerLink="mytask">
+            <mat-icon style="padding-right:5px;">person</mat-icon>
+            <span [@animateText]="linkText ? 'show' : 'hide'">My Donations </span>
+          </a>
       
       </mat-nav-list>
 
