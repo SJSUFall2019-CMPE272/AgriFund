@@ -324,7 +324,6 @@ font-size: 14px; top: -4px;"></i>
                 </tr>
             </table>
     
-    
         </mat-tab>
     
         <mat-tab label="All Issues">
@@ -348,9 +347,12 @@ font-size: 14px; top: -4px;"></i>
                 
                 <div class="col-sm-2">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="search"
+                            <input type="text" (keyup)="applyFilter($event.target.value)" class="form-control" placeholder="search"
                             aria-label="Text input with dropdown button">
                         <div class="input-group-btn">
+
+
+                            
                             <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
     

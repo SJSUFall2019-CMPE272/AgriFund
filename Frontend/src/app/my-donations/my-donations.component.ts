@@ -195,8 +195,7 @@ export class MyDonationsComponent implements OnInit {
     this.getAllIssues()
   
   this.getAllDonationsForUser()
-     this.dataSource.sort = this.sort;
-     this.dataSource.paginator = this.paginator;
+     
     
   }
 
@@ -204,7 +203,7 @@ export class MyDonationsComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
+    this.dataSource2.filter = filterValue;
   }
 
   ngAfterViewInit() {
@@ -326,6 +325,8 @@ this.allIssueResponce=<PeriodicElement[]>res
             this.specificDonoResponceForUser=<any>res
             this.dataSource=new MatTableDataSource<any>(this.specificDonoResponceForUser)
             console.log(res);
+            this.dataSource.sort = this.sort;
+     this.dataSource.paginator = this.paginator;
             return res
         });
         

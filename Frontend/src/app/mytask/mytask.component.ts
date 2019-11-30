@@ -173,15 +173,13 @@ export class MytaskComponent implements OnInit {
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
-    this.dataSource.filter = filterValue;
-    this.dataSource2.filter=filterValue
+    this.dataSource2.filter = filterValue;
   }
 
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
      this.dataSource.paginator = this.paginator;
-    this.dataSource2.paginator=this.paginator
-    this.dataSource2.sort=this.sort
+    
     //window.alert(this.paginator)
   }
 
@@ -301,6 +299,8 @@ this.specificIssueResponceForUser
             console.log(res);
 this.allIssueResponce=<any>res
             this.dataSource2=new MatTableDataSource<any>(this.allIssueResponce)
+            this.dataSource2.paginator=this.paginator
+            this.dataSource2.sort=this.sort
         });
 
         
