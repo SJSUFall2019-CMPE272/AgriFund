@@ -38,7 +38,7 @@
 		"font-awesome-animation": "0.2.1",
 		"gasparesganga-jquery-loading-overlay": "2.1.6",
 		"hammerjs": "^2.0.8",
-		"jquery": "3.4.1",
+		"jquery": "3.5.0",
 		"moment": "^2.24.0",
 		"ng-multiselect-dropdown": "^0.2.4",
 		"ngx-bootstrap": "4.1.1",
